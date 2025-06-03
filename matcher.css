@@ -1,0 +1,325 @@
+body {
+  font-family: 'Ariel', cursive, sans-serif;
+  text-align: center;
+  background-color: #fff7f0;
+  padding-top: 50px;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+input[type="text"] {
+  z-index: 1000;
+  position: relative;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+}
+
+/* buttons **/
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #ff4d4d;
+}
+
+.home-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 16px;
+  background-color: #ffa07a;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.home-button:hover {
+  background-color: #ff7f50;
+}
+
+.reset-button {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  padding: 10px 16px;
+  background-color: #6bc1ff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.reset-button:hover {
+  background-color: #40a9f3;
+}
+
+/* layout **/
+
+.button-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+#home-page .button-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+/* characters **/
+
+.character-container {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.character {
+  pointer-events: auto;
+  position: absolute;
+  width: 40px;
+  height: 80px;
+  background-size: cover;
+  transform: scale(0.8);
+  transform-origin: top left;
+  z-index: 20;
+}
+
+#char1 {
+  background-image: url('char1.png');
+}
+
+#char2 {
+  background-image: url('char2.png');
+}
+
+.start-marker {
+  position: absolute;
+  width: 40px;
+  height: 4px;
+  background-color: pink;
+  border-radius: 2px;
+  z-index: 10;
+}
+
+/* match page **/
+
+.heart {
+  font-size: 50px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.result {
+  font-size: 24px;
+  margin-top: 20px;
+  z-index: 10;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff7f0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 28px;
+  color: #e67e22;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.loader-heart {
+  font-size: 32px;
+  animation: pulse 1.2s infinite;
+}
+
+/* cook book **/
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.recipe-note {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  background-image: url('recipe_note.png');
+  background-size: cover;
+  background-position: center;
+  font-weight: normal;
+  color: black;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.skill-check-zone {
+  margin-top: 50px;
+  padding: 30px;
+  background-color: #ffeae7;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skill-icon {
+  width: 40px;
+  height: auto;
+  margin-bottom: 0px;
+}
+
+.skill-popup {
+  position: fixed;
+  bottom: 125px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffa07a;
+  color: white;
+  font-size: 20px;
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+}
+
+.skill-popup.hidden {
+  display: none;
+}
+
+/* faq section **/
+
+.faq-section {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ffd2d2;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 15px;
+  background-color: #ffa07a;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: #ff7f50;
+}
+
+.faq-answer {
+  padding: 15px;
+  display: none;
+  background-color: #ffeae7;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* misc */
+
+#matcher-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 15;
+}
+
+.button-wrapper {
+  display: inline-block;
+  margin: 10px;
+}
+
+.pixel-heart {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 1000;
+  pointer-events: none;
+  animation: pulse 1s infinite;
+  transform: translate(-50%, -100%);
+}
+
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cook Book</title>
+    <link rel="stylesheet" href="matcher.css">
+</head>
+
+<body>
+
+    <audio id="button-sound" src="runescape_button.wav" preload="auto"></audio>
+
+
+    <div id="cookbook-nav" class="nav-button-row">
+        <div class="button-wrapper" data-url="matcher.html">
+            <button>Compatibility Test</button>
+        </div>
+        <div class="button-wrapper" data-url="restaurant.html">
+            <button>Restaurant Picker</button>
+        </div>
+    </div>
+    <button onclick="playSoundAndGo('home.html')" class="home-button">Home 🏠</button>
+    <button onclick="resetCharacters()" class="reset-button">Reset</button>
+
+
+    <h1>💕Our Cook Book💕</h1>
+
+    <div class="character-container">
+        <div class="start-marker" style="left: 316px; top: 164px;"></div>
+        <div class="start-marker" style="left: 1168px; top: 164px;"></div>
+
+        <div id="char1" class="character" style="left: 318px; top: 102px;"></div>
+        <div id="char2" class="character" style="left: 1170px; top: 102px;"></div>
+    </div>
+
+    <!-- Recipe grid with notes-->
+    <div class="recipe-grid">
+        <div class="recipe-note" data-title="Shrimp Alfredo"
+            data-comment="comments"></div>
+        <div class="recipe-note" data-title="Scallion Noodle"
+            data-comment="comments"></div>
+        <div class="recipe-note" data-title="Steak"
+            data-comment="comments"></div>
+        <div class="recipe-note" data-title="Japanese Curry"
+            data-comment="comments"></div>
+        <div class="recipe-note" data-title="Sausage"
+            data-comment="comments"></div>
+        <div class="recipe-note" data-title="Crispy Chicken"
+            data-comment="comments"></div>
+    </div>
+
+    <p>Note:</p>
+    <p>Thank you note
+    </p>
+
+    <!--RuneScape inspired cooking level checker-->
+    <div id="cooking-skill-check" class="skill-check-zone">
+        <img src="cooking.png" alt="Cooking Skill" class="skill-icon">
+        <p> Check Your Cooking Level</p>
+    </div>
+    <div id="skill-popup" class="skill-popup hidden"></div>
+
+
+    <script src="movement.js"></script>
+
+    <!--Script for notes for each dish to appear triggered by character hovers-->
+    <script>
+        function checkCharacterOverlap() {
+            const char1 = document.getElementById('char1').getBoundingClientRect();
+            const char2 = document.getElementById('char2').getBoundingClientRect();
+
+            document.querySelectorAll('.recipe-note').forEach(note => {
+                const rect = note.getBoundingClientRect();
+                const isOverlappingChar1 =
+                    char1.left < rect.right &&
+                    char1.right > rect.left &&
+                    char1.top < rect.bottom &&
+                    char1.bottom > rect.top;
+
+                const isOverlappingChar2 =
+                    char2.left < rect.right &&
+                    char2.right > rect.left &&
+                    char2.top < rect.bottom &&
+                    char2.bottom > rect.top;
+
+                if (isOverlappingChar1 || isOverlappingChar2) {
+                    note.textContent = note.dataset.comment;
+                } else {
+                    note.textContent = note.dataset.title;
+                }
+            });
+        }
+
+        // initialize recipe titles on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.recipe-note').forEach(note => {
+                note.textContent = note.dataset.title;
+            });
+        });
+    </script>
+
+    <!--Script for cooking level checker, different levels for each character-->
+    <script>
+        let skillShownForChar1 = false;
+        let skillShownForChar2 = false;
+
+        function showSkillPopup(text) {
+            const popup = document.getElementById('skill-popup');
+            popup.textContent = text;
+            popup.classList.remove('hidden');
+
+            setTimeout(() => {
+                popup.classList.add('hidden');
+            }, 3000);
+        }
+
+        function checkCookingSkillOverlap() {
+            const skillZone = document.getElementById('cooking-skill-check').getBoundingClientRect();
+            const char1Rect = document.getElementById('char1').getBoundingClientRect();
+            const char2Rect = document.getElementById('char2').getBoundingClientRect();
+
+            const overlap1 =
+                char1Rect.left < skillZone.right &&
+                char1Rect.right > skillZone.left &&
+                char1Rect.top < skillZone.bottom &&
+                char1Rect.bottom > skillZone.top;
+
+            const overlap2 =
+                char2Rect.left < skillZone.right &&
+                char2Rect.right > skillZone.left &&
+                char2Rect.top < skillZone.bottom &&
+                char2Rect.bottom > skillZone.top;
+
+            if (overlap1 && !skillShownForChar1) {
+                skillShownForChar1 = true;
+                showSkillPopup("Cooking Level 99");
+            }
+
+            if (overlap2 && !skillShownForChar2) {
+                skillShownForChar2 = true;
+                showSkillPopup("Cooking Level 1");
+            }
+
+            if (!overlap1) skillShownForChar1 = false;
+            if (!overlap2) skillShownForChar2 = false;
+        }
+    </script>
+
+    <img id="love-heart" class="pixel-heart hidden" src="pixel-heart.png" alt="heart">
+
+</body>
+
+</html>

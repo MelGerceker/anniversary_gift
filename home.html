@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="matcher.css">
+</head>
+
+<body id="home-page">
+
+    <h1>Welcome to Our Page 💕</h1>
+
+    <audio id="button-sound" src="runescape_button.wav" preload="auto"></audio>
+
+    <button onclick="playSoundAndGo('home.html')" class="home-button">Home 🏠</button>
+    <button onclick="resetCharacters()" class="reset-button">Reset</button>
+
+    <div class="button-row">
+        <div class="button-wrapper" data-url="matcher.html">
+            <button>Compatibility Test</button>
+        </div>
+        <div class="button-wrapper" data-url="restaurant.html">
+            <button>Restaurant Picker</button>
+        </div>
+        <div class="button-wrapper" data-url="cookbook.html">
+            <button>Cook Book</button>
+        </div>
+    </div>
+
+    <!--Accordion list for FAQ-->
+    <div class="faq-section">
+        <div class="faq-item">
+            <button class="faq-question">Move our characters!</button>
+            <div class="faq-answer">
+                Use WASD to move your character, and use the arrow keys to move mine.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Buttons not working?</button>
+            <div class="faq-answer">
+                No, they are! You need both of us to use them.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What is this sound?</button>
+            <div class="faq-answer">
+                A sound effect from your favorite game.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Characters lost/gone?</button>
+            <div class="faq-answer">
+                Use the reset button under the home button.
+            </div>
+        </div>
+    </div>
+
+    <div class="character-container">
+        <div class="start-marker" style="left: 316px; top: 164px;"></div>
+        <div class="start-marker" style="left: 1168px; top: 164px;"></div>
+
+        <div id="char1" class="character" style="left: 318px; top: 102px;"></div>
+        <div id="char2" class="character" style="left: 1170px; top: 102px;"></div>
+    </div>
+
+    <script src="movement.js"></script>
+
+    <script>
+        const sound = document.getElementById('button-sound');
+        let hasTriggered = false;
+
+        function playSoundAndGo(url) {
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play();
+            }
+
+            // Hide characters
+            document.getElementById('char1').style.display = 'none';
+            document.getElementById('char2').style.display = 'none';
+
+            setTimeout(() => {
+                window.location.href = url;
+            }, 3500);
+        }
+
+        function checkOverlap() {
+            const char1 = document.getElementById('char1').getBoundingClientRect();
+            const char2 = document.getElementById('char2').getBoundingClientRect();
+
+            document.querySelectorAll('.button-wrapper').forEach(wrapper => {
+                const rect = wrapper.getBoundingClientRect();
+                const overlap1 =
+                    char1.left < rect.right &&
+                    char1.right > rect.left &&
+                    char1.top < rect.bottom &&
+                    char1.bottom > rect.top;
+
+                const overlap2 =
+                    char2.left < rect.right &&
+                    char2.right > rect.left &&
+                    char2.top < rect.bottom &&
+                    char2.bottom > rect.top;
+
+                if (overlap1 && overlap2 && !hasTriggered) {
+                    hasTriggered = true;
+                    const url = wrapper.dataset.url;
+                    playSoundAndGo(url);
+                }
+            });
+        }
+
+        // Re-check overlap on movement
+        document.addEventListener('keydown', () => {
+            setTimeout(checkOverlap, 20);
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+
+                // Close all open answers
+                document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+
+                // Toggle current
+                answer.style.display = isOpen ? 'none' : 'block';
+            });
+        });
+    </script>
+
+    <img id="love-heart" class="pixel-heart hidden" src="pixel-heart.png" alt="heart">
+
+</body>
+
+</html>
