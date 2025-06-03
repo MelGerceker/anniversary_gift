@@ -231,11 +231,11 @@ body {
 }
 
 #char1 {
-  background-image: url('char1.png');
+  background-image: url('assets/char1.png');
 }
 
 #char2 {
-  background-image: url('char2.png');
+  background-image: url('assets/char2.png');
 }
 
 .start-marker {

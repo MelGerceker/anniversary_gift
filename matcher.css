@@ -117,11 +117,11 @@ button:hover {
 }
 
 #char1 {
-  background-image: url('char1.png');
+  background-image: url('assets/char1.png');
 }
 
 #char2 {
-  background-image: url('char2.png');
+  background-image: url('assets/char2.png');
 }
 
 .start-marker {
@@ -202,7 +202,7 @@ button:hover {
   position: relative;
   width: 160px;
   height: 160px;
-  background-image: url('recipe_note.png');
+  background-image: url('assets/recipe_note.png');
   background-size: cover;
   background-position: center;
   font-weight: normal;
