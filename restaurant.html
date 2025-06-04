@@ -310,6 +310,7 @@
     </script>
 
 
+    <!-- added again since the coordinates are different -->
     <script>
       function resetCharacters() {
         const char1 = document.getElementById("char1");
@@ -329,6 +330,37 @@
     </script>
 
     <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
+
+
+    <!-- 
+  This script helps you find the percentage-based position (top and left) 
+  of any point you click on the map. It also places a temporary red dot 
+  to visually mark the clicked location. This was used to locate the positions of each restaurant name and pin. 
+
+  To use it, go to dev tools, inspect -> console.
+
+  <script>
+    document.querySelector('.map-wrapper').addEventListener('click', function (e) {
+      const wrapper = this.getBoundingClientRect();
+      const x = ((e.clientX - wrapper.left) / wrapper.width) * 100;
+      const y = ((e.clientY - wrapper.top) / wrapper.height) * 100;
+
+      console.log(`top: ${y.toFixed(1)}%; left: ${x.toFixed(1)}%;`);
+
+      const dot = document.createElement('div');
+      dot.style.position = 'absolute';
+      dot.style.left = `${x}%`;
+      dot.style.top = `${y}%`;
+      dot.style.width = '8px';
+      dot.style.height = '8px';
+      dot.style.background = 'red';
+      dot.style.borderRadius = '50%';
+      dot.style.zIndex = '9999';
+      this.appendChild(dot);
+   });
+  </script>
+  -->
+
 
 </body>
 

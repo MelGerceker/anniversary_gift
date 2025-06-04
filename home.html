@@ -70,57 +70,6 @@
     <script src="movement.js"></script>
 
     <script>
-        const sound = document.getElementById('button-sound');
-        let hasTriggered = false;
-
-        function playSoundAndGo(url) {
-            if (sound) {
-                sound.currentTime = 0;
-                sound.play();
-            }
-
-            // Hide characters
-            document.getElementById('char1').style.display = 'none';
-            document.getElementById('char2').style.display = 'none';
-
-            setTimeout(() => {
-                window.location.href = url;
-            }, 3500);
-        }
-
-        function checkOverlap() {
-            const char1 = document.getElementById('char1').getBoundingClientRect();
-            const char2 = document.getElementById('char2').getBoundingClientRect();
-
-            document.querySelectorAll('.button-wrapper').forEach(wrapper => {
-                const rect = wrapper.getBoundingClientRect();
-                const overlap1 =
-                    char1.left < rect.right &&
-                    char1.right > rect.left &&
-                    char1.top < rect.bottom &&
-                    char1.bottom > rect.top;
-
-                const overlap2 =
-                    char2.left < rect.right &&
-                    char2.right > rect.left &&
-                    char2.top < rect.bottom &&
-                    char2.bottom > rect.top;
-
-                if (overlap1 && overlap2 && !hasTriggered) {
-                    hasTriggered = true;
-                    const url = wrapper.dataset.url;
-                    playSoundAndGo(url);
-                }
-            });
-        }
-
-        // Re-check overlap on movement
-        document.addEventListener('keydown', () => {
-            setTimeout(checkOverlap, 20);
-        });
-    </script>
-
-    <script>
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const answer = button.nextElementSibling;

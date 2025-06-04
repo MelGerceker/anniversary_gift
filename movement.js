@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// add sound to buttons, characters dissapear and user is sent to desired page
 const sound = document.getElementById('button-sound');
 let hasTriggered = false;
 
