@@ -64,10 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (typeof checkCookingSkillOverlap === "function") {
       checkCookingSkillOverlap();
     }
-
   }
-
 });
+
+
+// checks for overlap
+function isOverlapping(rect1, rect2) {
+  return (
+    rect1.left < rect2.right &&
+    rect1.right > rect2.left &&
+    rect1.top < rect2.bottom &&
+    rect1.bottom > rect2.top
+  );
+}
 
 // add sound to buttons, characters dissapear and user is sent to desired page
 const sound = document.getElementById('button-sound');
@@ -94,17 +103,9 @@ function checkOverlap() {
 
   document.querySelectorAll('.button-wrapper').forEach(wrapper => {
     const rect = wrapper.getBoundingClientRect();
-    const overlap1 =
-      char1.left < rect.right &&
-      char1.right > rect.left &&
-      char1.top < rect.bottom &&
-      char1.bottom > rect.top;
 
-    const overlap2 =
-      char2.left < rect.right &&
-      char2.right > rect.left &&
-      char2.top < rect.bottom &&
-      char2.bottom > rect.top;
+    const overlap1 = isOverlapping(char1, rect);
+    const overlap2 = isOverlapping(char2, rect);
 
     if (overlap1 && overlap2 && !hasTriggered) {
       hasTriggered = true;
@@ -128,10 +129,7 @@ function checkCharactersTouching() {
   const rect1 = char1.getBoundingClientRect();
   const rect2 = char2.getBoundingClientRect();
 
-  const isTouching = rect1.left < rect2.right &&
-    rect1.right > rect2.left &&
-    rect1.top < rect2.bottom &&
-    rect1.bottom > rect2.top;
+  const isTouching = isOverlapping(rect1, rect2);
 
   if (isTouching) {
     const centerX = (rect1.left + rect2.left) / 2 + window.scrollX + 20;
@@ -145,15 +143,6 @@ function checkCharactersTouching() {
   }
 }
 
-// overlap detection
-function isOverlapping(rect1, rect2) {
-  return (
-    rect1.left < rect2.right &&
-    rect1.right > rect2.left &&
-    rect1.top < rect2.bottom &&
-    rect1.bottom > rect2.top
-  );
-}
 
 // check overlap of characters and elements
 function checkCharacterOverlapForElements(selector, onOverlap, onNoOverlap) {
