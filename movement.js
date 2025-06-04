@@ -144,3 +144,35 @@ function checkCharactersTouching() {
     heart.classList.add('hidden');
   }
 }
+
+// overlap detection
+function isOverlapping(rect1, rect2) {
+  return (
+    rect1.left < rect2.right &&
+    rect1.right > rect2.left &&
+    rect1.top < rect2.bottom &&
+    rect1.bottom > rect2.top
+  );
+}
+
+// check overlap of characters and elements
+function checkCharacterOverlapForElements(selector, onOverlap, onNoOverlap) {
+  const char1 = document.getElementById('char1').getBoundingClientRect();
+  const char2 = document.getElementById('char2').getBoundingClientRect();
+
+  let anyOverlap = false;
+
+  document.querySelectorAll(selector).forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const isOverlap = isOverlapping(char1, rect) || isOverlapping(char2, rect);
+
+    if (isOverlap) {
+      anyOverlap = true;
+      onOverlap(el);
+    } else {
+      onNoOverlap?.(el);
+    }
+  });
+
+  return anyOverlap;
+}

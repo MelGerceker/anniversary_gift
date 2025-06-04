@@ -228,45 +228,18 @@
     <!-- Script show popup cards triggered by character hover-->
     <script>
       function checkCharacterOverlapWithPins() {
-        const char1 = document.getElementById('char1').getBoundingClientRect();
-        const char2 = document.getElementById('char2').getBoundingClientRect();
-
-        let anyOverlap = false;
-
-        document.querySelectorAll('.pin').forEach(pin => {
-          const pinRect = pin.getBoundingClientRect();
-
-          const isOverlappingChar1 =
-            char1.left < pinRect.right &&
-            char1.right > pinRect.left &&
-            char1.top < pinRect.bottom &&
-            char1.bottom > pinRect.top;
-
-          const isOverlappingChar2 =
-            char2.left < pinRect.right &&
-            char2.right > pinRect.left &&
-            char2.top < pinRect.bottom &&
-            char2.bottom > pinRect.top;
-
-          pin.classList.remove('show-popup');
-
-          if (isOverlappingChar1 || isOverlappingChar2) {
-            anyOverlap = true;
-
-            // Show center popup with pin's info
-            const title = pin.querySelector('h3')?.textContent || '';
-            const text = pin.querySelector('p')?.textContent || '';
-            const centerPopup = document.getElementById('center-popup');
-            document.getElementById('popup-title').textContent = title;
-            document.getElementById('popup-text').textContent = text;
-            centerPopup.classList.remove('hidden');
-          }
+        const any = checkCharacterOverlapForElements('.pin', pin => {
+          const title = pin.querySelector('h3')?.textContent || '';
+          const text = pin.querySelector('p')?.textContent || '';
+          const centerPopup = document.getElementById('center-popup');
+          document.getElementById('popup-title').textContent = title;
+          document.getElementById('popup-text').textContent = text;
+          centerPopup.classList.remove('hidden');
         });
 
-        if (!anyOverlap) {
-          document.getElementById('center-popup').classList.add('hidden');
-        }
+        if (!any) document.getElementById('center-popup').classList.add('hidden');
       }
+
     </script>
 
     <script src="movement.js"></script>
@@ -310,7 +283,7 @@
     </script>
 
 
-    <!-- added again since the coordinates are different -->
+    <!-- added reset button logic again since the coordinates are different -->
     <script>
       function resetCharacters() {
         const char1 = document.getElementById("char1");
