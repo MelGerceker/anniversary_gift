@@ -13,17 +13,6 @@ body {
   overflow: hidden;
 }
 
-input[type="text"] {
-  z-index: 1000;
-  position: relative;
-}
-
-input {
-  padding: 10px;
-  margin: 10px;
-  font-size: 16px;
-}
-
 /* buttons **/
 
 button {
@@ -133,115 +122,78 @@ button:hover {
   z-index: 10;
 }
 
-/* match page **/
+/* cook book **/
 
-.heart {
-  font-size: 50px;
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-.result {
-  font-size: 24px;
-  margin-top: 20px;
-  z-index: 10;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff7f0;
-  z-index: 9999;
-  display: flex;
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
   justify-content: center;
+}
+
+.recipe-note {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  background-image: url('assets/recipe_note.png');
+  background-size: cover;
+  background-position: center;
+  font-weight: normal;
+  color: black;
+  font-size: 13px;
+  display: flex;
   align-items: center;
-  flex-direction: column;
-  font-size: 28px;
-  color: #e67e22;
+  justify-content: center;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  line-height: 1.2;
+  word-break: break-word;
 }
 
-.hidden {
-  display: none;
+.skill-check-zone {
+  margin-top: 50px;
+  padding: 30px;
+  background-color: #ffeae7;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.loader-heart {
-  font-size: 32px;
-  animation: pulse 1.2s infinite;
+.skill-icon {
+  width: 40px;
+  height: auto;
+  margin-bottom: 0px;
 }
 
-/* faq section **/
-
-.faq-section {
-  max-width: 600px;
-  margin: 40px auto;
-  text-align: left;
-}
-
-.faq-item {
-  margin-bottom: 10px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #ffd2d2;
-}
-
-.faq-question {
-  width: 100%;
-  padding: 15px;
+.skill-popup {
+  position: fixed;
+  bottom: 125px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #ffa07a;
   color: white;
-  font-weight: bold;
-  text-align: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 20px;
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
 }
 
-.faq-question:hover {
-  background-color: #ff7f50;
-}
-
-.faq-answer {
-  padding: 15px;
+.skill-popup.hidden {
   display: none;
-  background-color: #ffeae7;
-  font-size: 15px;
-  line-height: 1.4;
 }
 
-/* misc */
-
-#matcher-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 10px;
-  margin-top: -40px;
-  position: relative;
-  z-index: 15;
-}
 
 .button-wrapper {
   display: inline-block;
   margin: 10px;
 }
+
 
 .pixel-heart {
   position: absolute;
