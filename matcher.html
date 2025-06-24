@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Love Compatibility Calculator ❤️</title>
+  <link rel="stylesheet" href="matcher.css">
+</head>
+
+<body>
+
+  <audio id="button-sound" src="assets/runescape_button.wav" preload="auto"></audio>
+
+  <button onclick="playSoundAndGo('home.html')" class="home-button">Home 🏠</button>
+  <button onclick="resetCharacters()" class="reset-button">Reset</button>
+
+  <div class="character-container">
+    <div class="start-marker" style="left: 316px; top: 164px;"></div>
+    <div class="start-marker" style="left: 1168px; top: 164px;"></div>
+
+    <div id="char1" class="character" style="left: 318px; top: 102px;"></div>
+    <div id="char2" class="character" style="left: 1170px; top: 102px;"></div>
+  </div>
+
+  <div id="matcher-nav">
+    <div class="button-wrapper" data-url="restaurant.html">
+      <button>Restaurant Picker</button>
+    </div>
+    <div class="button-wrapper" data-url="cookbook.html">
+      <button> Cook Book</button>
+    </div>
+  </div>
+
+  <h1>💕 Love Compatibility 💕</h1>
+  <input type="text" id="name1" placeholder="Enter Name">
+  <input type="text" id="name2" placeholder="Enter Name"><br>
+  <button onclick="calculateLove()">Check Compatibility</button>
+
+  <div class="result" id="result"></div>
+  <div class="heart" id="heart">❤️</div>
+
+  <!-- Loading and match screen -->
+  <div id="loading-screen" class="overlay hidden">
+    <div class="loader-heart">💗 Calculating... 💗</div>
+  </div>
+
+  <div id="match-screen" class="overlay hidden">
+    <div class="button-row">
+      <button class="compatibility-button" onclick="document.location='restaurant.html'">Restaurant</button>
+      <button class="compatibility-button" onclick="document.location='cookbook.html'">Cook book</button>
+      <button onclick="location.href='home.html'" class="home-button">Home 🏠</button>
+      <button onclick="resetCharacters()" class="reset-button">Reset</button>
+    </div>
+    <h2>100% MATCH! 💖</h2>
+    <p id="match-result"></p>
+    <button onclick="document.location='matcher.html'">Go back</button>
+  </div>
+
+  <script src="movement.js"></script>
+
+
+  <!--Function to only go to the loading and match screen when "correct" names are input-->
+  <script>
+    function calculateLove() {
+      const name1 = document.getElementById('name1').value.trim().toLowerCase();
+      const name2 = document.getElementById('name2').value.trim().toLowerCase();
+      const resultDiv = document.getElementById('result');
+
+      if (!name1 || !name2) {
+        resultDiv.textContent = 'Please enter both names!';
+        return;
+      }
+
+      const matches = [
+        ['name1', 'name2'],
+        ['nickname1', 'nickname2'],
+      ];
+
+      const isSpecial = matches.some(pair =>
+        (name1 === pair[0] && name2 === pair[1]) ||
+        (name1 === pair[1] && name2 === pair[0])
+      );
+
+      if (!isSpecial) {
+        resultDiv.innerHTML = 'TYPO?';
+        return;
+      }
+
+      // Show loading screen
+      document.getElementById('loading-screen').classList.remove('hidden');
+
+      // After 2 seconds, show match screen
+      setTimeout(() => {
+        document.getElementById('loading-screen').classList.add('hidden');
+        document.getElementById('match-screen').classList.remove('hidden');
+        document.getElementById('match-result').innerHTML = `${name1} ❤️ ${name2}`;
+      }, 2000);
+    }
+
+  </script>
+
+  <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
+
+</body>
+
+</html>

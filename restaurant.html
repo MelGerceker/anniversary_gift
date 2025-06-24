@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Picker</title>
+  <link rel="stylesheet" href="restaurant.css">
+
+</head>
+
+<body>
+  <div class="header">
+    <h1>🍽️ Restaurant Picker</h1>
+
+    <div class="character-container">
+      <div class="start-marker" style="left: 105px; top: 453px;"></div>
+      <div class="start-marker" style="left: 155px; top: 453px;"></div>
+
+      <div id="char1" class="character" style="left: 105px; top: 382px;"></div>
+      <div id="char2" class="character" style="left: 155px; top: 382px;"></div>
+    </div>
+  </div>
+
+  <audio id="button-sound" src="assets/runescape_button.wav" preload="auto"></audio>
+
+  <div class="wrapper">
+    <div class="dice-box">
+      <div class="button-wrapper" data-url="matcher.html">
+        <button class="compatibility-button">Compatibility</button>
+      </div>
+      <div class="button-wrapper" data-url="cookbook.html">
+        <button class="compatibility-button">Cook Book</button>
+      </div>
+
+      <button onclick="playSoundAndGo('home.html')" class="home-button">Home 🏠</button>
+      <button onclick="resetCharacters()" class="reset-button">Reset</button>
+
+      <button id="dice-button">🎲 Roll the Dice</button>
+      <p id="dice-result"></p>
+    </div>
+
+
+    <div class="map-wrapper">
+      <div id="center-popup" class="center-popup hidden">
+        <h3 id="popup-title"></h3>
+        <p id="popup-text"></p>
+      </div>
+
+      <img src="assets/map - Copy.png" alt="Map" class="map-image" />
+
+
+      <!-- Restaurants -->
+      <!-- data-type: shows the categories for filtering -->
+      <!-- popup-card: has comments that appear when character hovers-->
+      <div class="pin" data-type="hamburger" style="top: 39%; left: 63.9%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Five Guys</span>
+
+        <div class="popup-card">
+          <h3>Five Guys</h3>
+          <p>Review</p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="asian sushi ramen bowl" style="top: 31%; left: 25.8%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Samurai Ramen</span>
+
+        <div class="popup-card">
+          <h3>Samurai Ramen</h3>
+          <p>Review</p>
+
+        </div>
+      </div>
+
+      <div class="pin" data-type="hamburger" style="top: 8.9%; left: 72.6%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">HMBRGR</span>
+
+        <div class="popup-card">
+          <h3>HMBRGR</h3>
+          <p>Review</p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="pasta pizza" style="top: 56.2%; left: 78.9%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Vapiano</span>
+
+        <div class="popup-card">
+          <h3>Vapiano</h3>
+          <p>Review</p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="asian bowl" style="top: 46.4%; left: 22.8%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Xu Noodle Bar</span>
+
+        <div class="popup-card">
+          <h3>Xu Noodle Bar</h3>
+          <p>Review</p>
+
+        </div>
+      </div>
+
+      <div class="pin" data-type="mexican" style="top: 92.9%; left: 53.6%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Chidoz</span>
+
+        <div class="popup-card">
+          <h3>Chidoz</h3>
+          <p>Review</p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="chicken" style="top: 85.1%; left: 61.2%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">SojuBar</span>
+
+        <div class="popup-card">
+          <h3>SojuBar</h3>
+          <p>Review</p>
+
+        </div>
+      </div>
+
+      <div class="pin" data-type="asian chicken" style="top: 97.6%; left: 85.7%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Man Nam Bar</span>
+
+        <div class="popup-card">
+          <h3>Man Nam Bar</h3>
+          <p>Review</p>
+          </p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="asian mexican bowl pizza pasta chicken sushi" style="top: 78.3%; left: 89.6%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Down Town</span>
+
+        <div class="popup-card">
+          <h3>Down Town</h3>
+          <p>Review</p>
+
+        </div>
+      </div>
+
+      <div class="pin" data-type="hamburger" style="top: 10.7%; left: 20.5%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">WawBurger</span>
+
+        <div class="popup-card">
+          <h3>WawBurger</h3>
+          <p>Review</p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="asian" style="top: 11.1%; left: 62.2%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">New Oriental</span>
+
+        <div class="popup-card">
+          <h3>New Oriental</h3>
+          <p>Review</p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="asian mexican bowl pizza pasta chicken sushi" style="top: 61.2%; left: 86.5%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Dadawan</span>
+
+        <div class="popup-card">
+          <h3>Dadawan</h3>
+          <p>Review</p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="chicken" style="top: 76.5%; left: 66.9%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Van't Spit</span>
+
+        <div class="popup-card">
+          <h3>Van't Spit</h3>
+          <p>Review</p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="hamburger" style="top: 86.8.3%; left: 44.2%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Taster</span>
+
+        <div class="popup-card">
+          <h3>Taster</h3>
+          <p>Review</p>
+        </div>
+      </div>
+
+      <div class="pin" data-type="asian sushi" style="top: 99.7%; left: 35.4%;">
+        <img src="assets/restaurant_pin.png" class="icon" />
+        <span class="label">Ikigai</span>
+
+        <div class="popup-card">
+          <h3>Ikigai</h3>
+          <p>Review</p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <label><input type="checkbox" value="italian" checked /> Italian</label>
+      <label><input type="checkbox" value="ramen" checked /> Ramen</label>
+      <label><input type="checkbox" value="hamburger" checked /> Hamburger</label>
+      <label><input type="checkbox" value="asian" checked /> Asian</label>
+      <label><input type="checkbox" value="sushi" checked /> Sushi</label>
+      <label><input type="checkbox" value="bowl" checked /> Bowl</label>
+      <label><input type="checkbox" value="chicken" checked /> Chicken</label>
+      <label><input type="checkbox" value="pasta" checked /> Pasta</label>
+      <label><input type="checkbox" value="pizza" checked /> Pizza</label>
+      <label><input type="checkbox" value="mexican" checked /> Mexican</label>
+    </div>
+
+
+    <!-- Script show popup cards triggered by character hover-->
+    <script>
+      function checkCharacterOverlapWithPins() {
+        const any = checkCharacterOverlapForElements('.pin', pin => {
+          const title = pin.querySelector('h3')?.textContent || '';
+          const text = pin.querySelector('p')?.textContent || '';
+          const centerPopup = document.getElementById('center-popup');
+          document.getElementById('popup-title').textContent = title;
+          document.getElementById('popup-text').textContent = text;
+          centerPopup.classList.remove('hidden');
+        });
+
+        if (!any) document.getElementById('center-popup').classList.add('hidden');
+      }
+
+    </script>
+
+    <script src="movement.js"></script>
+
+
+    <!--Script for filters-->
+    <script>
+      const checkboxes = document.querySelectorAll('.filters input[type="checkbox"]');
+
+      checkboxes.forEach(cb => {
+        cb.addEventListener('change', () => {
+          const selected = Array.from(checkboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+
+          document.querySelectorAll('.pin').forEach(pin => {
+            const types = pin.dataset.type.split(' ');
+            const match = selected.some(sel => types.includes(sel));
+            pin.style.display = match ? 'block' : 'none';
+          });
+        });
+      });
+
+      const diceButton = document.getElementById('dice-button');
+      const diceResult = document.getElementById('dice-result');
+
+      diceButton.addEventListener('click', () => {
+        const visiblePins = Array.from(document.querySelectorAll('.pin'))
+          .filter(pin => pin.style.display !== 'none');
+
+        if (visiblePins.length === 0) {
+          diceResult.textContent = "No restaurants match your current filters.";
+          return;
+        }
+
+        const randomPin = visiblePins[Math.floor(Math.random() * visiblePins.length)];
+        const name = randomPin.querySelector('.label').textContent;
+        diceResult.textContent = `Lets go to: ${name}`;
+      });
+
+    </script>
+
+
+    <!-- added reset button logic again since the coordinates are different -->
+    <script>
+      function resetCharacters() {
+        const char1 = document.getElementById("char1");
+        const char2 = document.getElementById("char2");
+
+        if (char1 && char2) {
+          char1.style.left = "105px";
+          char1.style.top = "382px";
+          char2.style.left = "155px";
+          char2.style.top = "382px";
+          char1.style.display = "block";
+          char2.style.display = "block";
+
+          hasTriggered = false;
+        }
+      }
+    </script>
+
+    <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
+
+
+    <!-- 
+  This script helps you find the percentage-based position (top and left) 
+  of any point you click on the map. It also places a temporary red dot 
+  to visually mark the clicked location. This was used to locate the positions of each restaurant name and pin. 
+
+  To use it, go to dev tools, inspect -> console.
+
+  <script>
+    document.querySelector('.map-wrapper').addEventListener('click', function (e) {
+      const wrapper = this.getBoundingClientRect();
+      const x = ((e.clientX - wrapper.left) / wrapper.width) * 100;
+      const y = ((e.clientY - wrapper.top) / wrapper.height) * 100;
+
+      console.log(`top: ${y.toFixed(1)}%; left: ${x.toFixed(1)}%;`);
+
+      const dot = document.createElement('div');
+      dot.style.position = 'absolute';
+      dot.style.left = `${x}%`;
+      dot.style.top = `${y}%`;
+      dot.style.width = '8px';
+      dot.style.height = '8px';
+      dot.style.background = 'red';
+      dot.style.borderRadius = '50%';
+      dot.style.zIndex = '9999';
+      this.appendChild(dot);
+   });
+  </script>
+  -->
+
+
+</body>
+
+</html>

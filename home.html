@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="matcher.css">
+</head>
+
+<body id="home-page">
+
+    <h1>Welcome to Our Page 💕</h1>
+
+    <audio id="button-sound" src="assets/runescape_button.wav" preload="auto"></audio>
+
+    <button onclick="playSoundAndGo('home.html')" class="home-button">Home 🏠</button>
+    <button onclick="resetCharacters()" class="reset-button">Reset</button>
+
+    <div class="button-row">
+        <div class="button-wrapper" data-url="matcher.html">
+            <button>Compatibility Test</button>
+        </div>
+        <div class="button-wrapper" data-url="restaurant.html">
+            <button>Restaurant Picker</button>
+        </div>
+        <div class="button-wrapper" data-url="cookbook.html">
+            <button>Cook Book</button>
+        </div>
+    </div>
+
+    <!--Accordion list for FAQ-->
+    <div class="faq-section">
+        <div class="faq-item">
+            <button class="faq-question">Move our characters!</button>
+            <div class="faq-answer">
+                Use WASD to move your character, and use the arrow keys to move mine.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Buttons not working?</button>
+            <div class="faq-answer">
+                No, they are! You need both of us to use them.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What is this sound?</button>
+            <div class="faq-answer">
+                A sound effect from your favorite game.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Characters lost/gone?</button>
+            <div class="faq-answer">
+                Use the reset button under the home button.
+            </div>
+        </div>
+    </div>
+
+    <div class="character-container">
+        <div class="start-marker" style="left: 316px; top: 164px;"></div>
+        <div class="start-marker" style="left: 1168px; top: 164px;"></div>
+
+        <div id="char1" class="character" style="left: 318px; top: 102px;"></div>
+        <div id="char2" class="character" style="left: 1170px; top: 102px;"></div>
+    </div>
+
+    <script src="movement.js"></script>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+
+                // Close all open answers
+                document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+
+                // Toggle current
+                answer.style.display = isOpen ? 'none' : 'block';
+            });
+        });
+    </script>
+
+    <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
+
+</body>
+
+</html>
