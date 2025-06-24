@@ -19,25 +19,47 @@ function resetCharacters() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  document.addEventListener('keydown', function (e) {
+  const keysPressed = {};
 
+
+  document.addEventListener('keydown', e => {
+    keysPressed[e.key] = true;
+    handleMovement();
+  });
+
+  document.addEventListener('keyup', e => {
+    keysPressed[e.key] = false;
+  });
+
+  // for continous and smoother movement
+  setInterval(() => {
+    handleMovement();
+  }, 40); // ms unit
+
+  function handleMovement() {
+
+    // Don't move the characters if the user is typing
     const active = document.activeElement;
     const isTyping = active.tagName === 'INPUT' || active.tagName === 'TEXTAREA';
 
-    if (isTyping) return; // Don't move if the user is typing
+    if (isTyping) return;
 
-    // character 1 (WASD)
-    if (e.key === 'w') move('char1', 0, -10);
-    if (e.key === 'a') move('char1', -10, 0);
-    if (e.key === 's') move('char1', 0, 10);
-    if (e.key === 'd') move('char1', 10, 0);
+    // Character 1 (WASD)
+    if (keysPressed['w']) move('char1', 0, -10);
+    if (keysPressed['a']) move('char1', -10, 0);
+    if (keysPressed['s']) move('char1', 0, 10);
+    if (keysPressed['d']) move('char1', 10, 0);
 
-    // character 2 (Arrow keys)
-    if (e.key === 'ArrowUp') move('char2', 0, -10);
-    if (e.key === 'ArrowLeft') move('char2', -10, 0);
-    if (e.key === 'ArrowDown') move('char2', 0, 10);
-    if (e.key === 'ArrowRight') move('char2', 10, 0);
-  });
+    // Character 2 (Arrow keys)
+    if (keysPressed['ArrowUp']) move('char2', 0, -10);
+    if (keysPressed['ArrowLeft']) move('char2', -10, 0);
+    if (keysPressed['ArrowDown']) move('char2', 0, 10);
+    if (keysPressed['ArrowRight']) move('char2', 10, 0);
+
+
+
+  }
+
 
   function move(id, dx, dy) {
 
