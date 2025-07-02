@@ -1,9 +1,3 @@
-/*
-import { firstNamesArray } from "./nameReader"
-import { secondNamesArray } from "./nameReader"
-import amountFirstName from "./nameReader"
-import amountSecondName from "./nameReader"
-**/
 import { firstNamesArray, secondNamesArray, loadNames } from './nameReader.js';
 
 let namesLoaded = false;
@@ -13,8 +7,6 @@ loadNames().then(() => {
 }).catch(err => {
     console.error("Failed to load names", err);
 });
-
-//let MatchMade;
 
 function calculateCompatibility() {
 
@@ -38,10 +30,15 @@ function calculateCompatibility() {
                     break;
                 }
             }
+        } else if (name2 == firstNamesArray[i]) {
+            for (let j = 0; j < secondNamesArray.length; j++) {
+                if (name1 == secondNamesArray[j]) {
+                    matchMade = true;
+                    break;
+                }
+            }
         }
     }
-
-    //TODO: Add another if statement to check for name2 in the first array and name1 in the second array.
 
     // In case match was not made
     if (!matchMade) {

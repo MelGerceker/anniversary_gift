@@ -1,4 +1,4 @@
-////Add-Names-Below-Do-Not-Delete-This-Line////
+////Add-Names-And-Their-Amount-Below-Do-Not-Delete-This-Line////
 ////Names-For-First-Person-Do-Not-Delete-This-Line////
 2
 name1

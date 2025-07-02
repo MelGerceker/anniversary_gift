@@ -45,13 +45,14 @@
   <div class="result" id="result"></div>
   <div class="heart" id="heart">❤️</div>
 
-  <!--For testing the FileReader-->
+  <!--For testing the FileReader
   <h2>Names:</h2>
   <div id="message"></div>
+  -->
+
   <pre id="file-content"></pre>
   <pre id="nameslist1"></pre>
   <pre id="nameslist2"></pre>
-
 
   <!-- Loading and match screen -->
   <div id="loading-screen" class="overlay hidden">
@@ -72,59 +73,8 @@
 
   <script src="movement.js"></script>
 
-  <!--Function for reading the compatible names from file-->
-   <!--
-  <script type="module" src="nameReader.js"></script>
- 
-  <script src="CompatibilityCalculator.js"></script>
--->
   <script type="module" src="CompatibilityCalculator.js"></script>
 
-
-  <!--Function to only go to the loading and match screen when "correct" names are input-->
-  <!--
-  <script>
-    function calculateCompatibility() {
-      const name1 = document.getElementById('name1').value.trim().toLowerCase();
-      const name2 = document.getElementById('name2').value.trim().toLowerCase();
-      const resultDiv = document.getElementById('result');
-
-      if (!name1 || !name2) {
-        resultDiv.textContent = 'Please enter both names!';
-        return;
-      }
-
-
-      
-      const matches = [
-        ['name1', 'name2'],
-        //['nickname1', 'nickname2'],
-        //not sure if the nicknames work since they are not const
-      ];
-
-      const isSpecial = matches.some(pair =>
-        (name1 === pair[0] && name2 === pair[1]) ||
-        (name1 === pair[1] && name2 === pair[0])
-      );
-
-      if (!isSpecial) {
-        resultDiv.innerHTML = 'TYPO?';
-        return;
-      }
-
-      // Show loading screen
-      document.getElementById('loading-screen').classList.remove('hidden');
-
-      // After 2 seconds, show match screen
-      setTimeout(() => {
-        document.getElementById('loading-screen').classList.add('hidden');
-        document.getElementById('match-screen').classList.remove('hidden');
-        document.getElementById('match-result').innerHTML = `${name1} ❤️ ${name2}`;
-      }, 2000);
-    }
-
-  </script>
-  -->
 
   <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
 

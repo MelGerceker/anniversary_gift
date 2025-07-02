@@ -1,28 +1,11 @@
-//Function for reading the compatible names from file
-
-//export { firstNamesArray }
-//export { secondNamesArray }
-//export let amountFirstName
-//export let amountSecondName
-
-//const firstNamesArray = [];
-//const secondNamesArray = [];
-//let amountFirstName = 0;
-//let amountSecondName = 0;
+//Function for reading the compatible names from CompatibleNames.txt
 
 export let firstNamesArray = [];
 export let secondNamesArray = [];
 
 export async function loadNames() {
-    /*
-    return fetch('Personalize/CompatibleNames.txt')
-        .then(response => response.text())
-        .then(text => {
-            document.getElementById('file-content').textContent = text;
-*/
     const response = await fetch('Personalize/CompatibleNames.txt');
     const text = await response.text();
-
 
     const lines = text.split("\n").map(l => l.trim());
     const firstNameIndex = lines.findIndex(line => line.includes("Names-For-First-Person"));
@@ -36,37 +19,15 @@ export async function loadNames() {
     secondNamesArray = [];
 
     for (let i = 0; i < amountFirstName; i++) {
-        //firstNamesArray[i] = lines[firstNameIndex + 2 + i].toLowerCase();
         firstNamesArray.push(lines[firstNameIndex + 2 + i].toLowerCase());
-
     }
 
     for (let i = 0; i < amountSecondName; i++) {
-        //secondNamesArray[i] = lines[secondNameIndex + 2 + i].toLowerCase();
         secondNamesArray.push(lines[secondNameIndex + 2 + i].toLowerCase());
-
     }
 
-    //document.getElementById("nameslist1").textContent = firstNamesArray;
-    //document.getElementById("nameslist2").textContent = secondNamesArray;
-
-    document.getElementById("nameslist1").textContent = firstNamesArray.join(', ');
-    document.getElementById("nameslist2").textContent = secondNamesArray.join(', ');
-
-    //can you create const inside for loops for multiple names for each person?
-    //const name1 = lines[firstNameIndex + 2];
-    //const name2 = lines[secondNameIndex + 1];
-
-    /*
-    })
-      .catch (err => {
-        document.getElementById('message').textContent = 'Error loading names.';
-        console.error(err);
-    });
-    
-    **/
-
+    // For testing
+    //document.getElementById("nameslist1").textContent = firstNamesArray.join(', ');
+    //document.getElementById("nameslist2").textContent = secondNamesArray.join(', ');
 
 }
-
-//export { firstNamesArray, secondNamesArray, loadNames };
