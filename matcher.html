@@ -39,8 +39,8 @@
 
   <input type="text" id="name1" placeholder="Enter Name">
   <input type="text" id="name2" placeholder="Enter Name"><br>
-  
-  <button onclick="calculateLove()">Check Compatibility</button>
+
+  <button onclick="calculateCompatibility()">Check Compatibility</button>
 
   <div class="result" id="result"></div>
   <div class="heart" id="heart">❤️</div>
@@ -73,11 +73,18 @@
   <script src="movement.js"></script>
 
   <!--Function for reading the compatible names from file-->
-  <script src="nameReader.js"></script>
+   <!--
+  <script type="module" src="nameReader.js"></script>
+ 
+  <script src="CompatibilityCalculator.js"></script>
+-->
+  <script type="module" src="CompatibilityCalculator.js"></script>
+
 
   <!--Function to only go to the loading and match screen when "correct" names are input-->
+  <!--
   <script>
-    function calculateLove() {
+    function calculateCompatibility() {
       const name1 = document.getElementById('name1').value.trim().toLowerCase();
       const name2 = document.getElementById('name2').value.trim().toLowerCase();
       const resultDiv = document.getElementById('result');
@@ -87,6 +94,8 @@
         return;
       }
 
+
+      
       const matches = [
         ['name1', 'name2'],
         //['nickname1', 'nickname2'],
@@ -115,6 +124,7 @@
     }
 
   </script>
+  -->
 
   <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
 
