@@ -2,14 +2,19 @@ let charactersMoved = false;
 
 // reset button logic
 function resetCharacters() {
+
+  //doesnt work yet
+  //position still hardcoded
+  alignCharactersToStartMarkers();
+
   const char1 = document.getElementById("char1");
   const char2 = document.getElementById("char2");
 
   if (char1 && char2) {
-    char1.style.left = "318px";
-    char1.style.top = "102px";
-    char2.style.left = "1170px";
-    char2.style.top = "102px";
+    // char1.style.left = "318px";
+    //char1.style.top = "102px";
+    //char2.style.left = "1170px";
+    //  char2.style.top = "102px";
     char1.style.display = "block";
     char2.style.display = "block";
 
@@ -18,6 +23,17 @@ function resetCharacters() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  setTimeout(() => {
+    alignCharactersToStartMarkers();
+  }, 150); //TODO: optimize needed time!
+
+
+  window.addEventListener('resize', () => {
+    if (!charactersMoved) {
+      alignCharactersToStartMarkers();
+    }
+  });
 
   const keysPressed = {};
 
@@ -65,11 +81,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     checkCharactersTouching();
 
+
     const el = document.getElementById(id);
     if (!el) return;
 
-    const left = (parseInt(el.style.left) || 0) + dx;
-    const top = (parseInt(el.style.top) || 0) + dy;
+    const elRect = el.getBoundingClientRect();
+    const containerRect = document.body.getBoundingClientRect();
+
+    // current position
+    let left = (parseInt(el.style.left) || 0) + dx;
+    let top = (parseInt(el.style.top) || 0) + dy;
+
+    // character size
+    const width = el.offsetWidth;
+    const height = el.getBoundingClientRect().height + 1;
+    //used this height so that the scale of 0.8 is accounted for
+
+    // Clamp to viewport
+    const maxLeft = window.innerWidth - width;
+    const maxTop = window.innerHeight - height;
+
+    left = Math.max(0, Math.min(left, maxLeft));
+    top = Math.max(0, Math.min(top, maxTop));
+
+    // apply movement
     el.style.left = `${left}px`;
     el.style.top = `${top}px`;
 
@@ -87,6 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
       checkCookingSkillOverlap();
     }
   }
+
+
 });
 
 
@@ -186,4 +223,45 @@ function checkCharacterOverlapForElements(selector, onOverlap, onNoOverlap) {
   });
 
   return anyOverlap;
+}
+
+function alignCharactersToStartMarkers() {
+  const char1 = document.getElementById("char1");
+  const char2 = document.getElementById("char2");
+
+  const pair1 = document.querySelectorAll(".character-pair")[0];
+  const pair2 = document.querySelectorAll(".character-pair")[1];
+
+  if (char1 && pair1) {
+    const markerRect = pair1.getBoundingClientRect();
+    const charRect = char1.getBoundingClientRect();
+
+    //const charWidth = char1.offsetWidth * 0.8;  // scale was applied in CSS
+    //const charHeight = char1.offsetHeight * 0.8;
+
+
+    const left = markerRect.left + markerRect.width / 2 - charRect.width / 2;
+    const top = markerRect.top - charRect.height + 4; // 4 = half of start marker height
+
+    //const top = markerRect.top + markerRect.height / 2 - charRect.height + 50; // simulate top: -50px
+    char1.style.left = `${left}px`;
+    char1.style.top = `${top}px`;
+  }
+
+  if (char2 && pair2) {
+    const markerRect = pair2.getBoundingClientRect();
+
+    const charRect = char2.getBoundingClientRect();
+
+    //const charWidth = char2.offsetWidth * 0.8;
+    //const charHeight = char2.offsetHeight * 0.8;
+
+    const left = markerRect.left + markerRect.width / 2 - charRect.width / 2;
+    const top = markerRect.top - charRect.height + 4;
+
+
+    //const top = markerRect.top + markerRect.height / 2 - charRect.height + 20;
+    char2.style.left = `${left}px`;
+    char2.style.top = `${top}px`;
+  }
 }
