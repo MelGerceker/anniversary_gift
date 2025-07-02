@@ -3,18 +3,12 @@ let charactersMoved = false;
 // reset button logic
 function resetCharacters() {
 
-  //doesnt work yet
-  //position still hardcoded
   alignCharactersToStartMarkers();
 
   const char1 = document.getElementById("char1");
   const char2 = document.getElementById("char2");
 
   if (char1 && char2) {
-    // char1.style.left = "318px";
-    //char1.style.top = "102px";
-    //char2.style.left = "1170px";
-    //  char2.style.top = "102px";
     char1.style.display = "block";
     char2.style.display = "block";
 
@@ -31,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener('resize', () => {
     if (!charactersMoved) {
-      alignCharactersToStartMarkers();
+      setTimeout(() => {
+        alignCharactersToStartMarkers();
+      }, 150); //TODO: optimize needed time!
     }
   });
 
@@ -225,6 +221,7 @@ function checkCharacterOverlapForElements(selector, onOverlap, onNoOverlap) {
   return anyOverlap;
 }
 
+// Characters responsively appear on top of their start markers
 function alignCharactersToStartMarkers() {
   const char1 = document.getElementById("char1");
   const char2 = document.getElementById("char2");
@@ -236,31 +233,21 @@ function alignCharactersToStartMarkers() {
     const markerRect = pair1.getBoundingClientRect();
     const charRect = char1.getBoundingClientRect();
 
-    //const charWidth = char1.offsetWidth * 0.8;  // scale was applied in CSS
-    //const charHeight = char1.offsetHeight * 0.8;
+    const left = markerRect.left + markerRect.width / 2 - charRect.width / 2 - 3;
+    const top = markerRect.top - charRect.height + 17;
+    // -3 and +17 is manually added so that the character's foot appears "perfectly" on top of the markers
 
-
-    const left = markerRect.left + markerRect.width / 2 - charRect.width / 2;
-    const top = markerRect.top - charRect.height + 4; // 4 = half of start marker height
-
-    //const top = markerRect.top + markerRect.height / 2 - charRect.height + 50; // simulate top: -50px
     char1.style.left = `${left}px`;
     char1.style.top = `${top}px`;
   }
 
   if (char2 && pair2) {
     const markerRect = pair2.getBoundingClientRect();
-
     const charRect = char2.getBoundingClientRect();
 
-    //const charWidth = char2.offsetWidth * 0.8;
-    //const charHeight = char2.offsetHeight * 0.8;
+    const left = markerRect.left + markerRect.width / 2 - charRect.width / 2 - 3;
+    const top = markerRect.top - charRect.height + 17;
 
-    const left = markerRect.left + markerRect.width / 2 - charRect.width / 2;
-    const top = markerRect.top - charRect.height + 4;
-
-
-    //const top = markerRect.top + markerRect.height / 2 - charRect.height + 20;
     char2.style.left = `${left}px`;
     char2.style.top = `${top}px`;
   }
