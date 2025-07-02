@@ -15,18 +15,11 @@
   <button onclick="resetCharacters()" class="reset-button">Reset</button>
 
   <div class="character-container">
-    <!--
-    <div class="start-marker" style="left: 316px; top: 164px;"></div>
-    <div class="start-marker" style="left: 1168px; top: 164px;"></div>
-
-    <div id="char1" class="character" style="left: 318px; top: 102px;"></div>
-    <div id="char2" class="character" style="left: 1170px; top: 102px;"></div>
-  -->
     <div class="character-pair" style="left: 30%; top: 25%;">
       <div class="start-marker"></div>
     </div>
     <div id="char1" class="character"></div>
-    
+
     <div class="character-pair" style="left: 70%; top: 25%;">
       <div class="start-marker"></div>
     </div>
@@ -43,12 +36,20 @@
   </div>
 
   <h1>💕 Love Compatibility 💕</h1>
+
   <input type="text" id="name1" placeholder="Enter Name">
   <input type="text" id="name2" placeholder="Enter Name"><br>
+  
   <button onclick="calculateLove()">Check Compatibility</button>
 
   <div class="result" id="result"></div>
   <div class="heart" id="heart">❤️</div>
+
+  <!--For testing the FileReader-->
+  <h2>Names:</h2>
+  <div id="message"></div>
+  <pre id="file-content"></pre>
+  
 
   <!-- Loading and match screen -->
   <div id="loading-screen" class="overlay hidden">
@@ -69,6 +70,8 @@
 
   <script src="movement.js"></script>
 
+  <!--Function for reading the compatible names from file-->
+  <script src="nameReader.js"></script>
 
   <!--Function to only go to the loading and match screen when "correct" names are input-->
   <script>
@@ -84,7 +87,8 @@
 
       const matches = [
         ['name1', 'name2'],
-        ['nickname1', 'nickname2'],
+        //['nickname1', 'nickname2'],
+        //not sure if the nicknames work since they are not const
       ];
 
       const isSpecial = matches.some(pair =>
