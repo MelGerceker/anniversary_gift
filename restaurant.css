@@ -1,28 +1,40 @@
+/*
 body {
   margin: 0;
   padding: 0;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   background-color: #fff7f0;
-  /*overflow: hidden; **/
-  display: flex;
-  flex-direction: column;
-
-  /*height: 100vh; **/
-
 }
 
-html, body {
+html,
+body {
   height: 100%;
-  overflow-y: auto; /* allow vertical scroll */
-  overflow-x: hidden; /* optional: prevent sideways scroll unless forced */
+  overflow-y: auto;
+  overflow-x: auto;
+}
+**/
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #fff7f0;
+
+  overflow-x: auto;  
+  overflow-y: auto;  
 }
 
 
+
+/*
 @media (max-width: 1200px) {
   .wrapper {
     overflow-x: auto;
   }
 }
+  */
 
 .header {
   flex-shrink: 0;
@@ -115,20 +127,6 @@ html, body {
 /*
 .dice-box {
   align-self: flex-start;
-  width: 180px;
-
-  fixed width prevents shifting
-
-  text-align: center;
-  font-size: 16px;
-  padding: 35px;
-  border-radius: 12px;
-  min-width: 160px;
-}
-**/
-
-.dice-box {
-  align-self: flex-start;
   text-align: center;
   font-size: 16px;
   padding: 20px;
@@ -139,35 +137,62 @@ html, body {
   flex-shrink: 1;
   overflow: auto;
 }
+  **/
+
+  .dice-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  text-align: left;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 12px;
+  flex-shrink: 0;
+
+    margin-right: auto;
+}
+
 
 /* map layout **/
 
 /*
 .wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  padding: 30px;
-  width: 100%;
-  height: 100%;
-}
-  **/
-
-.wrapper {
-  display: flex;
   justify-content: space-between;
-  /* or center if needed */
-   align-items: flex-start; /* prevent items from stretching ??*/
-
- /* align-items: center; **/
-  gap: 20px;
+  align-items: flex-start; 
+  gap: 10px;
   padding: 30px;
   width: auto;
   height: 100%;
   box-sizing: border-box;
-  /*  flex-wrap: wrap;  in case layout needs to stack */
+}
+*/
 
+/*
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 30px;
+
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+  */
+.wrapper {
+  display: flex;
+  flex-direction: row;
+    align-items: flex-start;
+ 
+   gap: 30px;
+  padding: 30px;
+
+  width: fit-content;
+   max-width: 1400px;
+  margin: 0 auto;
 }
 
 
@@ -175,7 +200,12 @@ html, body {
   position: relative;
   width: 800px;
   height: 550px;
-  margin: 0 auto;
+
+  /*margin: 0 auto; 
+  margin-left: auto;
+  margin-right: auto;
+  **/
+
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -267,27 +297,6 @@ html, body {
 
 /* characters **/
 
-/*
-.character-container {
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.character {
-  position: absolute;
-  pointer-events: auto;
-  width: 40px;
-  height: 80px;
-  background-size: cover;
-  transform: scale(0.8);
-  z-index: 20;
-}
-  **/
-
 .character {
   pointer-events: auto;
   position: absolute;
@@ -317,19 +326,6 @@ html, body {
   background-image: url('assets/char2.png');
 }
 
-/*
-.start-marker {
-  position: absolute;
-  width: 40px;
-  height: 4px;
-  background-color: pink;
-  border-radius: 2px;
-  z-index: 10;
-}
-**/
-
-/* filters **/
-
 .character-pair {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -347,30 +343,38 @@ html, body {
   right: 2px;
 }
 
+/* filters **/
+
 /*
 .filters {
   align-self: flex-start;
   text-align: left;
   font-size: 16px;
-  background: #fff7f0;
-  padding: 20px;
-  border-radius: 12px;
-  min-width: 260px;
-}
-  **/
-.filters {
-  align-self: flex-start;
-  text-align: left;
-  font-size: 16px;
-  background: #fff7f0;
+  background-color: #ffeae7;
+
   padding: 20px;
   border-radius: 12px;
 
-   min-width: 180px;
+  min-width: 120px;
   max-width: 220px;
   flex-shrink: 1;
-  overflow: auto; /* important for scrollbars */
+  flex-grow: 1;
+  overflow: auto;
 }
+  **/
+
+  .filters {
+  text-align: left;
+    font-size: 16px;
+
+  background-color: #ffeae7;
+  padding: 20px;
+  border-radius: 12px;
+  min-width: 120px;
+  max-width: 220px;
+  flex-shrink: 1;
+}
+
 
 .filters label {
   display: block;
@@ -391,3 +395,5 @@ html, body {
 .hidden {
   display: none;
 }
+
+
