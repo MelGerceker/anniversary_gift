@@ -246,8 +246,13 @@
           const title = pin.querySelector('h3')?.textContent || '';
           const text = pin.querySelector('p')?.textContent || '';
           const centerPopup = document.getElementById('center-popup');
+          const dataType = pin.dataset.type;
+          const type = pin.dataset.type || '';
+
           document.getElementById('popup-title').textContent = title;
           document.getElementById('popup-text').textContent = text;
+          document.getElementById('popup-text').innerHTML = `${text}<br>Category: ${type}`;
+
           centerPopup.classList.remove('hidden');
         });
 
