@@ -3,12 +3,25 @@ body {
   padding: 0;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   background-color: #fff7f0;
-  overflow: hidden;
+  /*overflow: hidden; **/
   display: flex;
   flex-direction: column;
 
-  height: 100vh;
+  /*height: 100vh; **/
 
+}
+
+html, body {
+  height: 100%;
+  overflow-y: auto; /* allow vertical scroll */
+  overflow-x: hidden; /* optional: prevent sideways scroll unless forced */
+}
+
+
+@media (max-width: 1200px) {
+  .wrapper {
+    overflow-x: auto;
+  }
 }
 
 .header {
@@ -99,10 +112,12 @@ body {
   color: #2c3e50;
 }
 
+/*
 .dice-box {
   align-self: flex-start;
   width: 180px;
-  /* fixed width prevents shifting */
+
+  fixed width prevents shifting
 
   text-align: center;
   font-size: 16px;
@@ -110,9 +125,24 @@ body {
   border-radius: 12px;
   min-width: 160px;
 }
+**/
+
+.dice-box {
+  align-self: flex-start;
+  text-align: center;
+  font-size: 16px;
+  padding: 20px;
+  border-radius: 12px;
+
+  min-width: 160px;
+  max-width: 200px;
+  flex-shrink: 1;
+  overflow: auto;
+}
 
 /* map layout **/
 
+/*
 .wrapper {
   display: flex;
   justify-content: center;
@@ -122,6 +152,24 @@ body {
   width: 100%;
   height: 100%;
 }
+  **/
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  /* or center if needed */
+   align-items: flex-start; /* prevent items from stretching ??*/
+
+ /* align-items: center; **/
+  gap: 20px;
+  padding: 30px;
+  width: auto;
+  height: 100%;
+  box-sizing: border-box;
+  /*  flex-wrap: wrap;  in case layout needs to stack */
+
+}
+
 
 .map-wrapper {
   position: relative;
@@ -132,6 +180,12 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background-color: #eee;
+
+  flex-shrink: 0;
+  /* <-- Prevent shrinking */
+  flex-grow: 0;
+  /* <-- Prevent growing */
+
 }
 
 .map-container,
@@ -293,6 +347,7 @@ body {
   right: 2px;
 }
 
+/*
 .filters {
   align-self: flex-start;
   text-align: left;
@@ -301,6 +356,20 @@ body {
   padding: 20px;
   border-radius: 12px;
   min-width: 260px;
+}
+  **/
+.filters {
+  align-self: flex-start;
+  text-align: left;
+  font-size: 16px;
+  background: #fff7f0;
+  padding: 20px;
+  border-radius: 12px;
+
+   min-width: 180px;
+  max-width: 220px;
+  flex-shrink: 1;
+  overflow: auto; /* important for scrollbars */
 }
 
 .filters label {
