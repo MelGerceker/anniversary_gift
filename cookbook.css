@@ -42,6 +42,7 @@ h1 {
 .btn--red {
     background-color: #ff6b6b;
 }
+
 .btn--red:hover {
     background-color: #ff4d4d;
 }
@@ -90,6 +91,7 @@ h1 {
 /* characters **/
 
 .character {
+    pointer-events: auto;
     position: absolute;
     width: 40px;
     height: 80px;
@@ -110,6 +112,7 @@ h1 {
 }
 
 .character-container {
+    pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -142,6 +145,13 @@ h1 {
 }
 
 /* cook book **/
+
+.add-recipe-form,
+.recipe-grid {
+    position: relative;
+    z-index: var(--z-ui);
+}
+
 
 .recipe-grid {
     display: grid;
