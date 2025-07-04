@@ -1,7 +1,7 @@
 // Load recipes array
 let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
 
-// 2. Render the recipe grid
+// Render the recipe grid
 function renderRecipes() {
     const grid = document.querySelector('.recipe-grid');
     grid.innerHTML = ''; // Clear existing
@@ -28,6 +28,34 @@ function renderRecipes() {
 }
 
 window.addEventListener('DOMContentLoaded', renderRecipes);
+
+// Edit and Delete Button Handling
+document.querySelector('.recipe-grid').addEventListener('click', function (e) {
+  const note = e.target.closest('.recipe-note');
+  const recipeId = note?.dataset.id;
+
+  if (!recipeId) return;
+
+  if (e.target.classList.contains('delete-btn')) {
+    recipes = recipes.filter(recipe => recipe.id !== recipeId);
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+    renderRecipes();
+  }
+
+  if (e.target.classList.contains('edit-btn')) {
+    const recipe = recipes.find(r => r.id === recipeId);
+    if (!recipe) return;
+
+    const newTitle = prompt('Edit title:', recipe.title);
+    const newComment = prompt('Edit comment:', recipe.comment);
+
+    if (newTitle !== null) recipe.title = newTitle.trim();
+    if (newComment !== null) recipe.comment = newComment.trim();
+
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+    renderRecipes();
+  }
+});
 
 
 // Unique recipe ID
