@@ -8,6 +8,18 @@ This project is an aniversary gift for my partner, made public to inspire others
 
 A pixel-art themed website with multiple interactive pages, some parts are hidden as surprises.
 
+## 🚀 How to Launch
+
+To run this project correctly, you need to **use a local server**, such as the [Live Server extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+
+**Why?** Some parts of the project (like reading the `CompatibleNames.txt` file in JavaScript) won't work if you just open the HTML file directly in your browser. Running through a local server ensures everything loads properly.
+
+### Steps:
+1. Clone or download this repository.
+2. Open the folder in Visual Studio Code.
+3. Install the **Live Server** extension.
+4. Right-click on any `.html` file (e.g. `home.html`) and click **"Open with Live Server"**.
+5. You're ready!
 
 ## Pages Overview
 
