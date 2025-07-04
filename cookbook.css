@@ -84,7 +84,13 @@ h1 {
 }
 
 .nav-button-row {
-    margin-top: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: var(--z-ui);
 }
 
 
@@ -234,6 +240,52 @@ h1 {
 
 .popup.hidden {
     display: none;
+}
+
+
+/* Add New Recipe */
+
+.add-recipe-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background-color: #ffeae7;
+    border-radius: 16px;
+    margin: 10px auto;
+    width: fit-content;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: var(--z-ui);
+}
+
+.add-recipe-form input[type="text"] {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 2px solid #ffb3b3;
+    font-size: 16px;
+    width: 100px;
+    background-color: #fff7f0;
+    font-family: 'BubbleFont', sans-serif;
+}
+
+.add-recipe-form input[type="text"]::placeholder {
+    color: #999;
+}
+
+#add-recipe-btn {
+    background-color: #ff6b6b;
+    color: white;
+    font-weight: bold;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#add-recipe-btn:hover {
+    background-color: #ff4d4d;
 }
 
 
