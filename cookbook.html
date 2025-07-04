@@ -19,17 +19,17 @@
         </div>
     </div>
     <button onclick="playSoundAndGo('home.html')" class="home-button">Home 🏠</button>
-    <button onclick="resetCharacters()" class="reset-button">Reset</button>
+    <button aria-label="Reset character positions" onclick="resetCharacters()" class="reset-button">Reset</button>
 
     <h1>💕Our Cook Book💕</h1>
 
     <div class="character-container">
-        <div class="character-pair" style="left: 30%; top: 25%;">
+        <div class="character-pair position-1">
             <div class="start-marker"></div>
 
         </div>
         <div id="char1" class="character"></div>
-        <div class="character-pair" style="left: 70%; top: 25%;">
+        <div class="character-pair position-2">
             <div class="start-marker"></div>
         </div>
         <div id="char2" class="character"></div>
@@ -45,9 +45,10 @@
         <div class="recipe-note" data-title="Crispy Chicken" data-comment="comments"></div>
     </div>
 
-    <p>Note:</p>
-    <p>Thank you note
-    </p>
+    <footer>
+        <p><strong>Note:</strong><br> Personalized thank you message here.</p>
+    </footer>
+
 
     <!--RuneScape inspired cooking level checker-->
     <div id="cooking-skill-check" class="skill-check-zone">
@@ -66,17 +67,8 @@
 
             document.querySelectorAll('.recipe-note').forEach(note => {
                 const rect = note.getBoundingClientRect();
-                const isOverlappingChar1 =
-                    char1.left < rect.right &&
-                    char1.right > rect.left &&
-                    char1.top < rect.bottom &&
-                    char1.bottom > rect.top;
-
-                const isOverlappingChar2 =
-                    char2.left < rect.right &&
-                    char2.right > rect.left &&
-                    char2.top < rect.bottom &&
-                    char2.bottom > rect.top;
+                const isOverlappingChar1 = isOverlapping(char1, rect);
+                const isOverlappingChar2 = isOverlapping(char2, rect);
 
                 if (isOverlappingChar1 || isOverlappingChar2) {
                     note.textContent = note.dataset.comment;
@@ -114,17 +106,8 @@
             const char1Rect = document.getElementById('char1').getBoundingClientRect();
             const char2Rect = document.getElementById('char2').getBoundingClientRect();
 
-            const overlap1 =
-                char1Rect.left < skillZone.right &&
-                char1Rect.right > skillZone.left &&
-                char1Rect.top < skillZone.bottom &&
-                char1Rect.bottom > skillZone.top;
-
-            const overlap2 =
-                char2Rect.left < skillZone.right &&
-                char2Rect.right > skillZone.left &&
-                char2Rect.top < skillZone.bottom &&
-                char2Rect.bottom > skillZone.top;
+            const overlap1 = isOverlapping(char1Rect, skillZone);
+            const overlap2 = isOverlapping(char2Rect, skillZone);
 
             if (overlap1 && !skillShownForChar1) {
                 skillShownForChar1 = true;

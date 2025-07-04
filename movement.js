@@ -124,14 +124,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // checks for overlap
-function isOverlapping(rect1, rect2) {
+window.isOverlapping = function (rect1, rect2) {
   return (
     rect1.left < rect2.right &&
     rect1.right > rect2.left &&
     rect1.top < rect2.bottom &&
     rect1.bottom > rect2.top
   );
-}
+};
 
 // add sound to buttons, characters dissapear and user is sent to desired page
 const sound = document.getElementById('button-sound');
