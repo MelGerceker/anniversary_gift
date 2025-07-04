@@ -149,7 +149,7 @@ h1 {
 .add-recipe-form,
 .recipe-grid {
     position: relative;
-    z-index: var(--z-ui);
+    z-index: var(--z-base);
 }
 
 
@@ -183,11 +183,64 @@ h1 {
     word-break: break-word;
 }
 
+/* Recipe Editor Popup */
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffeae7;
+    border: 3px solid #ff6b6b;
+    padding: 20px;
+    z-index: var(--z-popup);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.popup input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+
+.popup-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn--save {
+    background-color: #6bc1ff;
+}
+
+.btn--save:hover {
+    background-color: #40a9f3;
+}
+
+.btn--cancel {
+    background-color: #ffa07a;
+}
+
+.btn--cancel:hover {
+    background-color: #ff7f50;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+
 /*skill check*/
 
 .skill-check-zone {
     margin-top: 25px;
-
     flex-grow: 1;
     padding: 5vh 5vw;
     background-color: #ffeae7;
@@ -220,7 +273,6 @@ h1 {
 .skill-popup.hidden {
     display: none;
 }
-
 
 /* misc */
 

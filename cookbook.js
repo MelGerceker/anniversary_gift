@@ -29,32 +29,77 @@ function renderRecipes() {
 
 window.addEventListener('DOMContentLoaded', renderRecipes);
 
+// Popup references
+const editPopup = document.getElementById('edit-popup');
+const editTitleInput = document.getElementById('edit-title');
+const editCommentInput = document.getElementById('edit-comment');
+const saveBtn = document.getElementById('save-edit-btn');
+const cancelBtn = document.getElementById('cancel-edit-btn');
+
+let editingRecipeId = null;
+
+// Edit button handler
+document.querySelector('.recipe-grid').addEventListener('click', function (e) {
+    const note = e.target.closest('.recipe-note');
+    const recipeId = note?.dataset.id;
+
+    if (!recipeId) return;
+
+    if (e.target.classList.contains('delete-btn')) {
+        recipes = recipes.filter(recipe => recipe.id !== recipeId);
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+        renderRecipes();
+        return;
+    }
+
+    if (e.target.classList.contains('edit-btn')) {
+        const recipe = recipes.find(r => r.id === recipeId);
+        if (!recipe) return;
+
+        editingRecipeId = recipeId;
+        editTitleInput.value = recipe.title;
+        editCommentInput.value = recipe.comment;
+        editPopup.classList.remove('hidden');
+    }
+});
+
+// Save changes
+saveBtn.addEventListener('click', () => {
+    const updatedTitle = editTitleInput.value.trim();
+    const updatedComment = editCommentInput.value.trim();
+
+    const recipe = recipes.find(r => r.id === editingRecipeId);
+    if (recipe) {
+        recipe.title = updatedTitle;
+        recipe.comment = updatedComment;
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+        renderRecipes();
+    }
+
+    editPopup.classList.add('hidden');
+    editingRecipeId = null;
+});
+
+// Cancel edit
+cancelBtn.addEventListener('click', () => {
+    editPopup.classList.add('hidden');
+    editingRecipeId = null;
+});
+
+
 // Edit and Delete Button Handling
 document.querySelector('.recipe-grid').addEventListener('click', function (e) {
-  const note = e.target.closest('.recipe-note');
-  const recipeId = note?.dataset.id;
+    const note = e.target.closest('.recipe-note');
+    const recipeId = note?.dataset.id;
 
-  if (!recipeId) return;
+    if (!recipeId) return;
 
-  if (e.target.classList.contains('delete-btn')) {
-    recipes = recipes.filter(recipe => recipe.id !== recipeId);
-    localStorage.setItem('recipes', JSON.stringify(recipes));
-    renderRecipes();
-  }
+    if (e.target.classList.contains('delete-btn')) {
+        recipes = recipes.filter(recipe => recipe.id !== recipeId);
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+        renderRecipes();
+    }
 
-  if (e.target.classList.contains('edit-btn')) {
-    const recipe = recipes.find(r => r.id === recipeId);
-    if (!recipe) return;
-
-    const newTitle = prompt('Edit title:', recipe.title);
-    const newComment = prompt('Edit comment:', recipe.comment);
-
-    if (newTitle !== null) recipe.title = newTitle.trim();
-    if (newComment !== null) recipe.comment = newComment.trim();
-
-    localStorage.setItem('recipes', JSON.stringify(recipes));
-    renderRecipes();
-  }
 });
 
 
