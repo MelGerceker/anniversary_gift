@@ -16,16 +16,33 @@ function renderRecipes() {
         note.className = 'recipe-note';
         note.dataset.id = recipe.id;
         note.innerHTML = `
-  <div class="note-title">${recipe.title}</div>
-  <div class="note-comment hidden">${recipe.comment}</div>
-  <div class="note-actions">
-    <button class="edit-btn">✏️</button>
-    <button class="delete-btn">❌</button>
-  </div>
+     <div class="note-title">${recipe.title}</div>
+     <div class="note-comment hidden">${recipe.comment}</div>
+     <div class="note-actions">
+     <button class="edit-btn" aria-label="Edit">
+        <img src="assets/edit-icon.svg" alt="Edit">
+     </button>
+     </div>
 `;
         grid.appendChild(note);
     });
 }
+
+// Delete Button Logic
+const popupDeleteBtn = document.getElementById('delete-recipe-btn');
+
+popupDeleteBtn.addEventListener('click', () => {
+    if (!editingRecipeId) return;
+    recipes = recipes.filter(recipe => recipe.id !== editingRecipeId);
+
+    // Save to localStorage
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+
+    renderRecipes();
+    editPopup.classList.add('hidden');
+    editingRecipeId = null;
+});
+
 
 window.addEventListener('DOMContentLoaded', renderRecipes);
 
@@ -43,16 +60,7 @@ document.querySelector('.recipe-grid').addEventListener('click', function (e) {
     const note = e.target.closest('.recipe-note');
     const recipeId = note?.dataset.id;
 
-    if (!recipeId) return;
-
-    if (e.target.classList.contains('delete-btn')) {
-        recipes = recipes.filter(recipe => recipe.id !== recipeId);
-        localStorage.setItem('recipes', JSON.stringify(recipes));
-        renderRecipes();
-        return;
-    }
-
-    if (e.target.classList.contains('edit-btn')) {
+    if (e.target.closest('.edit-btn')) {
         const recipe = recipes.find(r => r.id === recipeId);
         if (!recipe) return;
 
@@ -85,23 +93,6 @@ cancelBtn.addEventListener('click', () => {
     editPopup.classList.add('hidden');
     editingRecipeId = null;
 });
-
-
-// Edit and Delete Button Handling
-document.querySelector('.recipe-grid').addEventListener('click', function (e) {
-    const note = e.target.closest('.recipe-note');
-    const recipeId = note?.dataset.id;
-
-    if (!recipeId) return;
-
-    if (e.target.classList.contains('delete-btn')) {
-        recipes = recipes.filter(recipe => recipe.id !== recipeId);
-        localStorage.setItem('recipes', JSON.stringify(recipes));
-        renderRecipes();
-    }
-
-});
-
 
 // Unique recipe ID
 function generateId() {

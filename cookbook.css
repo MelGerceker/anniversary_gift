@@ -242,6 +242,48 @@ h1 {
     display: none;
 }
 
+.delete-icon-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.delete-icon-btn img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
+  transition: transform 0.2s ease;
+}
+
+.delete-icon-btn:hover img {
+  transform: scale(1.1);
+}
+
+.note-actions {
+  position: absolute;
+  bottom: 23px;
+  right: 28px;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.edit-btn img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+
+
 
 /* Add New Recipe */
 
