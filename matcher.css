@@ -1,3 +1,4 @@
+/*
 body {
   font-family: 'Ariel', cursive, sans-serif;
   text-align: center;
@@ -12,9 +13,37 @@ body {
   height: 100%;
   overflow: hidden;
 }
+  */
+
+html,
+body {
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+
+  padding-top: 50px;
+  /* temporary */
+
+  font-family: 'BubbleFont', sans-serif;
+  background-color: #fff7f0;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: 'BubbleFont';
+  src: url('./assets/BubblegumSans-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  --z-base: 1;
+  --z-character: 10;
+  --z-ui: 100;
+  --z-popup: 1000;
+}
 
 input[type="text"] {
-  z-index: 1000;
+  z-index: var(--z-base);
   position: relative;
 }
 
@@ -26,33 +55,30 @@ input {
 
 /* buttons **/
 
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #ff6b6b;
+.btn {
   color: white;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  margin: 5px;
+  font-size: 16px;
+  padding: 10px 16px;
 }
 
-button:hover {
-  background-color: #ff4d4d;
+.btn--red {
+    background-color: #ff6b6b;
 }
+
+.btn--red:hover {
+    background-color: #ff4d4d;
+}
+
 
 .home-button {
   position: absolute;
   top: 20px;
   left: 20px;
-  padding: 10px 16px;
   background-color: #ffa07a;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  z-index: 100;
+  z-index: var(--z-ui);
 }
 
 .home-button:hover {
@@ -65,12 +91,7 @@ button:hover {
   left: 20px;
   padding: 10px 16px;
   background-color: #6bc1ff;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  z-index: 100;
+  z-index: var(--z-ui);
 }
 
 .reset-button:hover {
@@ -103,26 +124,26 @@ button:hover {
   background-size: cover;
   transform: scale(0.8);
   transform-origin: top left;
-  z-index: 20;
+  z-index: var(--z-character);
 }
 
 .position-1 {
-    left: 30%;
-    top: 25%;
+  left: 30%;
+  top: 25%;
 }
 
 .position-2 {
-    left: 70%;
-    top: 25%;
+  left: 70%;
+  top: 25%;
 }
 
 .character-container {
   position: absolute;
-  pointer-events: none;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: var(--z-base);
 }
 
 #char1 {
@@ -136,7 +157,8 @@ button:hover {
 .character-pair {
   position: absolute;
   transform: translate(-50%, -50%);
-  z-index: 10;
+  pointer-events: none;
+
 }
 
 .character-pair .start-marker {
@@ -144,7 +166,7 @@ button:hover {
   height: 4px;
   background-color: pink;
   border-radius: 2px;
-  z-index: 10;
+  z-index: var(--z-base);
   position: relative;
   top: 17px;
   right: 2px;
@@ -174,7 +196,7 @@ button:hover {
 .result {
   font-size: 24px;
   margin-top: 20px;
-  z-index: 10;
+  z-index: var(--z-base);
 }
 
 .overlay {
@@ -184,7 +206,7 @@ button:hover {
   width: 100%;
   height: 100%;
   background: #fff7f0;
-  z-index: 9999;
+  z-index: var(--z-popup);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,10 +214,6 @@ button:hover {
   font-size: 28px;
   color: #e67e22;
   text-align: center;
-}
-
-.hidden {
-  display: none;
 }
 
 .loader-heart {
@@ -252,7 +270,6 @@ button:hover {
   margin-bottom: 10px;
   margin-top: -40px;
   position: relative;
-  z-index: 15;
 }
 
 .button-wrapper {
@@ -264,12 +281,11 @@ button:hover {
   position: absolute;
   width: 24px;
   height: 24px;
-  z-index: 1000;
+  z-index: var(--z-popup);
   pointer-events: none;
   animation: pulse 1s infinite;
   transform: translate(-50%, -100%);
 }
-
 
 .hidden {
   display: none;

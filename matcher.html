@@ -11,22 +11,8 @@
 
   <audio id="button-sound" src="assets/runescape_button.wav" preload="auto"></audio>
 
-  <button onclick="playSoundAndGo('home.html')" class="home-button">Home 🏠</button>
-  <button onclick="resetCharacters()" class="reset-button">Reset</button>
-
-  <!--
-  <div class="character-container">
-    <div class="character-pair" style="left: 30%; top: 25%;">
-      <div class="start-marker"></div>
-    </div>
-    <div id="char1" class="character"></div>
-
-    <div class="character-pair" style="left: 70%; top: 25%;">
-      <div class="start-marker"></div>
-    </div>
-    <div id="char2" class="character"></div>
-  </div>
-  -->
+  <button onclick="playSoundAndGo('home.html')" class="btn home-button">Home 🏠</button>
+  <button onclick="resetCharacters()" class="btn reset-button">Reset</button>
 
     <div class="character-container">
         <div class="character-pair position-1">
@@ -42,10 +28,10 @@
 
   <div id="matcher-nav">
     <div class="button-wrapper" data-url="restaurant.html">
-      <button>Restaurant Picker</button>
+      <button class="btn btn--red">Restaurant Picker</button>
     </div>
     <div class="button-wrapper" data-url="cookbook.html">
-      <button> Cook Book</button>
+      <button class="btn btn--red"> Cook Book</button>
     </div>
   </div>
 
@@ -54,15 +40,10 @@
   <input type="text" id="name1" placeholder="Enter Name">
   <input type="text" id="name2" placeholder="Enter Name"><br>
 
-  <button onclick="calculateCompatibility()">Check Compatibility</button>
+  <button class="btn btn--red" onclick="calculateCompatibility()">Check Compatibility</button>
 
   <div class="result" id="result"></div>
   <div class="heart" id="heart">❤️</div>
-
-  <!--For testing the FileReader
-  <h2>Names:</h2>
-  <div id="message"></div>
-  -->
 
   <pre id="file-content"></pre>
   <pre id="nameslist1"></pre>
