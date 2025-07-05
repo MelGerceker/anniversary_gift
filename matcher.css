@@ -51,6 +51,7 @@ input {
   padding: 10px;
   margin: 10px;
   font-size: 16px;
+  border-radius: 5px;
 }
 
 /* buttons **/
@@ -65,11 +66,11 @@ input {
 }
 
 .btn--red {
-    background-color: #ff6b6b;
+  background-color: #ff6b6b;
 }
 
 .btn--red:hover {
-    background-color: #ff4d4d;
+  background-color: #ff4d4d;
 }
 
 
@@ -99,6 +100,12 @@ input {
 }
 
 /* layout **/
+
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
 
 .button-row {
   display: flex;
@@ -289,4 +296,75 @@ input {
 
 .hidden {
   display: none;
+}
+
+/* Heart background from: Ha Hyun Yong, more information on README **/
+
+.bg_heart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+.heart {
+  position: absolute;
+  top: -50%;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -m-transform: rotate(-45deg);
+  transform: rotate(-45deg)
+}
+
+.heart:before {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
+}
+
+.heart:after {
+  position: absolute;
+  top: 0;
+  right: -50%;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
+}
+
+@-webkit-keyframes love {
+  0% {
+    top: 110%
+  }
+}
+
+@-moz-keyframes love {
+  0% {
+    top: 110%
+  }
+}
+
+@-ms-keyframes love {
+  0% {
+    top: 110%
+  }
+}
+
+@keyframes love {
+  0% {
+    top: 110%
+  }
 }

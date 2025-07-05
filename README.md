@@ -88,3 +88,7 @@ anniversary_gift/
 
 ## Work in Progress 🚧
 Still in the progress of upgrading!
+
+## Credits
+
+The heart background visual effects in this project are adapted from [Ha Hyun Yong’s CodePen](https://codepen.io/lovefield/pen/vEvqZV), used under the MIT license.

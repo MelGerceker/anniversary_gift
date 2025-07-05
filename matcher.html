@@ -9,70 +9,91 @@
 
 <body>
 
-  <audio id="button-sound" src="assets/runescape_button.wav" preload="auto"></audio>
+  <!-- Temporary-->
+  <div class="bg_heart">
+  </div>
 
-  <button onclick="playSoundAndGo('home.html')" class="btn home-button">Home 🏠</button>
-  <button onclick="resetCharacters()" class="btn reset-button">Reset</button>
+  <div class="main-content">
+
+    <audio id="button-sound" src="assets/runescape_button.wav" preload="auto"></audio>
+
+    <button onclick="playSoundAndGo('home.html')" class="btn home-button">Home 🏠</button>
+    <button onclick="resetCharacters()" class="btn reset-button">Reset</button>
 
     <div class="character-container">
-        <div class="character-pair position-1">
-            <div class="start-marker"></div>
+      <div class="character-pair position-1">
+        <div class="start-marker"></div>
 
-        </div>
-        <div id="char1" class="character"></div>
-        <div class="character-pair position-2">
-            <div class="start-marker"></div>
-        </div>
-        <div id="char2" class="character"></div>
+      </div>
+      <div id="char1" class="character"></div>
+      <div class="character-pair position-2">
+        <div class="start-marker"></div>
+      </div>
+      <div id="char2" class="character"></div>
     </div>
 
-  <div id="matcher-nav">
-    <div class="button-wrapper" data-url="restaurant.html">
-      <button class="btn btn--red">Restaurant Picker</button>
+    <div id="matcher-nav">
+      <div class="button-wrapper" data-url="restaurant.html">
+        <button class="btn btn--red">Restaurant Picker</button>
+      </div>
+      <div class="button-wrapper" data-url="cookbook.html">
+        <button class="btn btn--red"> Cook Book</button>
+      </div>
     </div>
-    <div class="button-wrapper" data-url="cookbook.html">
-      <button class="btn btn--red"> Cook Book</button>
+
+    <h1>💕 Love Compatibility 💕</h1>
+
+    <input type="text" id="name1" placeholder="Enter Name">
+    <input type="text" id="name2" placeholder="Enter Name"><br>
+
+    <button class="btn btn--red" onclick="calculateCompatibility()">Check Compatibility</button>
+
+    <div class="result" id="result"></div>
+    <div class="heart" id="heart">❤️</div>
+
+    <pre id="file-content"></pre>
+    <pre id="nameslist1"></pre>
+    <pre id="nameslist2"></pre>
+
+    <!-- Loading and match screen -->
+    <div id="loading-screen" class="overlay hidden">
+      <div class="loader-heart">💗 Calculating... 💗</div>
     </div>
+
+    <div id="match-screen" class="overlay hidden">
+      <div class="button-row">
+        <button class="compatibility-button" onclick="document.location='restaurant.html'">Restaurant</button>
+        <button class="compatibility-button" onclick="document.location='cookbook.html'">Cook book</button>
+        <button onclick="location.href='home.html'" class="home-button">Home 🏠</button>
+        <button onclick="resetCharacters()" class="reset-button">Reset</button>
+      </div>
+      <h2>100% MATCH! 💖</h2>
+      <p id="match-result"></p>
+
+      <!-- Heart background from: Ha Hyun Yong, more information on README-->
+
+
+
+
+
+
+
+      <button onclick="document.location='matcher.html'">Go back</button>
+    </div>
+
+    <!-- for heart animation-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <script src="movement.js"></script>
+
+    <script type="module" src="CompatibilityCalculator.js"></script>
+
+    <script src="HeartBackground.js"></script>
+
+    <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
+
   </div>
-
-  <h1>💕 Love Compatibility 💕</h1>
-
-  <input type="text" id="name1" placeholder="Enter Name">
-  <input type="text" id="name2" placeholder="Enter Name"><br>
-
-  <button class="btn btn--red" onclick="calculateCompatibility()">Check Compatibility</button>
-
-  <div class="result" id="result"></div>
-  <div class="heart" id="heart">❤️</div>
-
-  <pre id="file-content"></pre>
-  <pre id="nameslist1"></pre>
-  <pre id="nameslist2"></pre>
-
-  <!-- Loading and match screen -->
-  <div id="loading-screen" class="overlay hidden">
-    <div class="loader-heart">💗 Calculating... 💗</div>
-  </div>
-
-  <div id="match-screen" class="overlay hidden">
-    <div class="button-row">
-      <button class="compatibility-button" onclick="document.location='restaurant.html'">Restaurant</button>
-      <button class="compatibility-button" onclick="document.location='cookbook.html'">Cook book</button>
-      <button onclick="location.href='home.html'" class="home-button">Home 🏠</button>
-      <button onclick="resetCharacters()" class="reset-button">Reset</button>
-    </div>
-    <h2>100% MATCH! 💖</h2>
-    <p id="match-result"></p>
-    <button onclick="document.location='matcher.html'">Go back</button>
-  </div>
-
-  <script src="movement.js"></script>
-
-  <script type="module" src="CompatibilityCalculator.js"></script>
-
-
-  <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
-
 </body>
 
 </html>
