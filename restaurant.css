@@ -181,6 +181,10 @@ body {
 /* pop-up cards **/
 
 .popup-card {
+
+
+
+
   position: absolute;
   bottom: 110%;
   left: 50%;
@@ -306,3 +310,33 @@ body {
 }
 
 
+/* pop up rating */
+
+.ratingControl {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.ratingControl input {
+  display: none;
+}
+
+.ratingControl label {
+  font-size: 20px;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.ratingControl input:checked ~ label,
+.ratingControl label:hover,
+.ratingControl label:hover ~ label {
+  color: #FFD700;
+}
+
+.ratingControl label:before {
+  content: "★";
+}
