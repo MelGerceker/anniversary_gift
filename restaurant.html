@@ -66,6 +66,8 @@
       <!-- Restaurants -->
       <!-- data-type: shows the categories for filtering -->
       <!-- popup-card: has comments that appear when character hovers-->
+
+      <!--
       <div class="pin" data-type="hamburger" style="top: 39%; left: 63.9%;">
         <img src="assets/restaurant_pin.png" class="icon" />
         <span class="label">Five Guys</span>
@@ -222,6 +224,8 @@
         </div>
       </div>
 
+      -->
+
     </div>
 
     <!-- Filters -->
@@ -240,6 +244,7 @@
 
 
     <!-- Script show popup cards triggered by character hover-->
+     
     <script>
       function checkCharacterOverlapWithPins() {
         const any = checkCharacterOverlapForElements('.pin', pin => {
@@ -258,11 +263,15 @@
 
         if (!any) document.getElementById('center-popup').classList.add('hidden');
       }
+ 
 
     </script>
 
     <script src="movement.js"></script>
 
+    <script src="restaurant.js"></script>
+
+    <script src="renderRestaurants.js"></script>
 
     <!--Script for filters-->
     <script>
@@ -303,6 +312,7 @@
 
 
     <!-- added reset button logic again since the coordinates are different -->
+     <!--
     <script>
       function resetCharacters() {
         const char1 = document.getElementById("char1");
@@ -320,6 +330,7 @@
         }
       }
     </script>
+  -->
 
     <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
 
