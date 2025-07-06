@@ -246,9 +246,8 @@ input {
 }
 
 /* Heart background from: Ha Hyun Yong, more information on README **/
-
-.bg_heart {
-  position: fixed;
+#match-screen .bg_heart {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
