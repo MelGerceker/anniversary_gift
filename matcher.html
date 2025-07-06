@@ -17,8 +17,19 @@
 
     <audio id="button-sound" src="assets/runescape_button.wav" preload="auto"></audio>
 
+    <div class="button-row">
+      <div class="button-wrapper" data-url="restaurant.html">
+        <button class="btn btn--red">Restaurant Picker</button>
+      </div>
+      <div class="button-wrapper" data-url="cookbook.html">
+        <button class="btn btn--red">Cook Book</button>
+      </div>
+    </div>
+
     <button onclick="playSoundAndGo('home.html')" class="btn home-button">Home 🏠</button>
     <button onclick="resetCharacters()" class="btn reset-button">Reset</button>
+
+    <h1>💕 Love Compatibility 💕</h1>
 
     <div class="character-container">
       <div class="character-pair position-1">
@@ -32,24 +43,22 @@
       <div id="char2" class="character"></div>
     </div>
 
-    <div id="matcher-nav">
-      <div class="button-wrapper" data-url="restaurant.html">
-        <button class="btn btn--red">Restaurant Picker</button>
+    <!-- Input section -->
+    <div class="input-section">
+      <div class="input-section-row">
+        <input type="text" id="name1" placeholder="Enter Name">
+        <input type="text" id="name2" placeholder="Enter Name">
       </div>
-      <div class="button-wrapper" data-url="cookbook.html">
-        <button class="btn btn--red"> Cook Book</button>
-      </div>
+      <button class="btn btn--red" onclick="calculateCompatibility()">Check Compatibility</button>
     </div>
 
-    <h1>💕 Love Compatibility 💕</h1>
 
-    <input type="text" id="name1" placeholder="Enter Name">
-    <input type="text" id="name2" placeholder="Enter Name"><br>
-
-    <button class="btn btn--red" onclick="calculateCompatibility()">Check Compatibility</button>
-
+    <!-- Compatibility result -->
     <div class="result" id="result"></div>
     <div class="heart" id="heart">❤️</div>
+
+
+
 
     <pre id="file-content"></pre>
     <pre id="nameslist1"></pre>
@@ -61,37 +70,47 @@
     </div>
 
     <div id="match-screen" class="overlay hidden">
-      <div class="button-row">
-        <button class="compatibility-button" onclick="document.location='restaurant.html'">Restaurant</button>
-        <button class="compatibility-button" onclick="document.location='cookbook.html'">Cook book</button>
-        <button onclick="location.href='home.html'" class="home-button">Home 🏠</button>
-        <button onclick="resetCharacters()" class="reset-button">Reset</button>
+      <div class="match-top-buttons">
+        <div class="button-wrapper" data-url="restaurant.html">
+          <button class="btn btn--red">Restaurant Picker</button>
+        </div>
+        <div class="button-wrapper" data-url="cookbook.html">
+          <button class="btn btn--red">Cook Book</button>
+        </div>
       </div>
       <h2>100% MATCH! 💖</h2>
       <p id="match-result"></p>
-
-      <!-- Heart background from: Ha Hyun Yong, more information on README-->
-
-
-
-
-
-
-
-      <button onclick="document.location='matcher.html'">Go back</button>
+      <div class="button-row">
+        <button class="btn home-button" onclick="location.href='home.html'">Home 🏠</button>
+        <button class="btn reset-button" onclick="resetCharacters()">Reset</button>
+      </div>
+      <button class="btn btn--red" onclick="location.href='matcher.html'">Go Back</button>
     </div>
-
-    <!-- for heart animation-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </div>
 
 
-    <script src="movement.js"></script>
 
-    <script type="module" src="CompatibilityCalculator.js"></script>
 
-    <script src="HeartBackground.js"></script>
+  <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
+  </div>
 
-    <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
+  <!-- Heart background from: Ha Hyun Yong, more information on README-->
+
+
+
+
+
+
+  <!-- for heart animation-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <script src="movement.js"></script>
+
+  <script type="module" src="CompatibilityCalculator.js"></script>
+
+  <script src="HeartBackground.js"></script>
+
 
   </div>
 </body>
