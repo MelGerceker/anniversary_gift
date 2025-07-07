@@ -5,7 +5,14 @@ body {
   overflow: hidden;
   font-family: 'BubbleFont', sans-serif;
   background-color: #fff7f0;
-  overflow-x: hidden;
+  min-height: 500px;
+
+}
+
+@media (max-height: 500px) {
+  html {
+    overflow-y: auto;
+  }
 }
 
 @font-face {
@@ -138,6 +145,7 @@ body {
 /* faq section **/
 
 .faq-section {
+  min-height: 250px;
   max-width: 600px;
   margin: 40px auto;
   text-align: left;
@@ -146,12 +154,12 @@ body {
 .faq-item {
   margin-bottom: 10px;
   border-radius: 8px;
-  overflow: hidden;
   border: 1px solid #ffd2d2;
 }
 
 .faq-question {
   width: 100%;
+  height: 100%;
   padding: 15px;
   background-color: #ffa07a;
   color: white;
