@@ -1,0 +1,16 @@
+.star-rating {
+    display: inline-flex;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.star svg {
+    width: 40px;
+    height: 40px;
+    fill: #ccc;
+    transition: fill 0.2s;
+}
+
+.star.filled svg {
+    fill: #ff6b6b;
+}
