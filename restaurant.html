@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Restaurant Picker</title>
-  <link rel="stylesheet" href="restaurant.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/restaurant.css">
 
 </head>
 
@@ -12,23 +13,13 @@
   <div class="header">
     <h1>🍽️ Restaurant Picker</h1>
 
-    <!--
     <div class="character-container">
-      <div class="start-marker" style="left: 105px; top: 453px;"></div>
-      <div class="start-marker" style="left: 155px; top: 453px;"></div>
-
-      <div id="char1" class="character" style="left: 105px; top: 382px;"></div>
-      <div id="char2" class="character" style="left: 155px; top: 382px;"></div>
-    </div>
-  -->
-
-    <div class="character-container">
-      <div class="character-pair" style="left: 8%; top: 59%;">
+      <div class="character-pair position-1">
         <div class="start-marker"></div>
       </div>
       <div id="char1" class="character"></div>
 
-      <div class="character-pair" style="left: 12%; top: 59%;">
+      <div class="character-pair position-2">
         <div class="start-marker"></div>
       </div>
       <div id="char2" class="character"></div>
@@ -40,19 +31,18 @@
   <div class="wrapper">
     <div class="dice-box">
       <div class="button-wrapper" data-url="matcher.html">
-        <button class="compatibility-button">Compatibility Test</button>
+        <button class="btn btn--red">Compatibility Test</button>
       </div>
       <div class="button-wrapper" data-url="cookbook.html">
-        <button class="compatibility-button">Cook Book</button>
+        <button class="btn btn--red">Cook Book</button>
       </div>
 
-      <button onclick="playSoundAndGo('home.html')" class="home-button">Home 🏠</button>
-      <button onclick="resetCharacters()" class="reset-button">Reset</button>
+      <button onclick="playSoundAndGo('home.html')" class="btn home-button">Home 🏠</button>
+      <button onclick="resetCharacters()" class="btn reset-button">Reset</button>
 
-      <button id="dice-button">🎲 Roll the Dice</button>
+      <button id="dice-button" class="btn">🎲 Roll the Dice</button>
       <p id="dice-result"></p>
     </div>
-
 
     <div class="map-wrapper">
       <div id="center-popup" class="center-popup hidden">
@@ -61,170 +51,6 @@
       </div>
 
       <img src="assets/map - Copy.png" alt="Map" class="map-image" />
-
-
-      <!-- Restaurants -->
-      <!-- data-type: shows the categories for filtering -->
-      <!-- popup-card: has comments that appear when character hovers-->
-
-      <!--
-      <div class="pin" data-type="hamburger" style="top: 39%; left: 63.9%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Five Guys</span>
-
-        <div class="popup-card">
-          <h3>Five Guys</h3>
-          <p>Review</p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="asian sushi ramen bowl" style="top: 31%; left: 25.8%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Samurai Ramen</span>
-
-        <div class="popup-card">
-          <h3>Samurai Ramen</h3>
-          <p>Review</p>
-
-        </div>
-      </div>
-
-      <div class="pin" data-type="hamburger" style="top: 8.9%; left: 72.6%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">HMBRGR</span>
-
-        <div class="popup-card">
-          <h3>HMBRGR</h3>
-          <p>Review</p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="pasta pizza" style="top: 56.2%; left: 78.9%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Vapiano</span>
-
-        <div class="popup-card">
-          <h3>Vapiano</h3>
-          <p>Review</p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="asian bowl" style="top: 46.4%; left: 22.8%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Xu Noodle Bar</span>
-
-        <div class="popup-card">
-          <h3>Xu Noodle Bar</h3>
-          <p>Review</p>
-
-        </div>
-      </div>
-
-      <div class="pin" data-type="mexican" style="top: 92.9%; left: 53.6%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Chidoz</span>
-
-        <div class="popup-card">
-          <h3>Chidoz</h3>
-          <p>Review</p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="chicken" style="top: 85.1%; left: 61.2%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">SojuBar</span>
-
-        <div class="popup-card">
-          <h3>SojuBar</h3>
-          <p>Review</p>
-
-        </div>
-      </div>
-
-      <div class="pin" data-type="asian chicken" style="top: 97.6%; left: 85.7%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Man Nam Bar</span>
-
-        <div class="popup-card">
-          <h3>Man Nam Bar</h3>
-          <p>Review</p>
-          </p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="asian mexican bowl pizza pasta chicken sushi" style="top: 78.3%; left: 89.6%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Down Town</span>
-
-        <div class="popup-card">
-          <h3>Down Town</h3>
-          <p>Review</p>
-
-        </div>
-      </div>
-
-      <div class="pin" data-type="hamburger" style="top: 10.7%; left: 20.5%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">WawBurger</span>
-
-        <div class="popup-card">
-          <h3>WawBurger</h3>
-          <p>Review</p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="asian" style="top: 11.1%; left: 62.2%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">New Oriental</span>
-
-        <div class="popup-card">
-          <h3>New Oriental</h3>
-          <p>Review</p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="asian mexican bowl pizza pasta chicken sushi" style="top: 61.2%; left: 86.5%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Dadawan</span>
-
-        <div class="popup-card">
-          <h3>Dadawan</h3>
-          <p>Review</p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="chicken" style="top: 76.5%; left: 66.9%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Van't Spit</span>
-
-        <div class="popup-card">
-          <h3>Van't Spit</h3>
-          <p>Review</p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="hamburger" style="top: 86.8.3%; left: 44.2%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Taster</span>
-
-        <div class="popup-card">
-          <h3>Taster</h3>
-          <p>Review</p>
-        </div>
-      </div>
-
-      <div class="pin" data-type="asian sushi" style="top: 99.7%; left: 35.4%;">
-        <img src="assets/restaurant_pin.png" class="icon" />
-        <span class="label">Ikigai</span>
-
-        <div class="popup-card">
-          <h3>Ikigai</h3>
-          <p>Review</p>
-
-        </div>
-      </div>
-
-      -->
 
     </div>
 
@@ -244,7 +70,7 @@
 
 
     <!-- Script show popup cards triggered by character hover-->
-     
+
     <script>
       function checkCharacterOverlapWithPins() {
         const any = checkCharacterOverlapForElements('.pin', pin => {
@@ -263,15 +89,15 @@
 
         if (!any) document.getElementById('center-popup').classList.add('hidden');
       }
- 
+
 
     </script>
 
-    <script src="movement.js"></script>
+    <script src="scripts/movement.js"></script>
 
-    <script src="restaurant.js"></script>
+    <script src="scripts/restaurant.js"></script>
 
-    <script src="renderRestaurants.js"></script>
+    <script src="scripts/renderRestaurants.js"></script>
 
     <!--Script for filters-->
     <script>
@@ -310,28 +136,6 @@
 
     </script>
 
-
-    <!-- added reset button logic again since the coordinates are different -->
-     <!--
-    <script>
-      function resetCharacters() {
-        const char1 = document.getElementById("char1");
-        const char2 = document.getElementById("char2");
-
-        if (char1 && char2) {
-          char1.style.left = "105px";
-          char1.style.top = "382px";
-          char2.style.left = "155px";
-          char2.style.top = "382px";
-          char1.style.display = "block";
-          char2.style.display = "block";
-
-          hasTriggered = false;
-        }
-      }
-    </script>
-  -->
-
     <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
 
 
@@ -363,7 +167,6 @@
    });
   </script>
   -->
-
 
 </body>
 
