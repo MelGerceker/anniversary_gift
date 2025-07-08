@@ -1,20 +1,22 @@
 html,
 body {
-    font-family: 'BubbleFont', sans-serif;
-
+  margin: 0;
+  padding: 0;
+  font-family: 'BubbleFont', sans-serif;
+  background-color: #fff7f0;
 }
 
 @font-face {
-    font-family: 'BubbleFont';
-    src: url('../assets/BubblegumSans-Regular.ttf') format('truetype');
-    font-display: swap;
+  font-family: 'BubbleFont';
+  src: url('../assets/BubblegumSans-Regular.ttf') format('truetype');
+  font-display: swap;
 }
 
 :root {
-    --z-base: 1;
-    --z-character: 10;
-    --z-ui: 100;
-    --z-popup: 1000;
+  --z-base: 1;
+  --z-character: 10;
+  --z-ui: 100;
+  --z-popup: 1000;
 }
 
 
@@ -109,4 +111,36 @@ body {
   position: relative;
   top: 17px;
   right: 2px;
+}
+
+/* layout **/
+
+.button-wrapper {
+  display: inline-block;
+  margin: 10px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+/* misc */
+
+/*The heart on top of characters*/
+.pixel-heart {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: var(--z-popup);
+  pointer-events: none;
+  animation: pulse 1s infinite;
+  transform: translate(-50%, -100%);
+}
+
+.hidden {
+  display: none;
 }

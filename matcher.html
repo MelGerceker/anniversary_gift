@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Compatibility Calculator</title>
-  <link rel="stylesheet" href="matcher.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/matcher.css">
 </head>
 
 <body>
@@ -46,13 +47,8 @@
     <button class="btn btn--red" onclick="calculateCompatibility()">Check Compatibility</button>
   </div>
 
-
-  <!-- Compatibility result -->
   <div class="result" id="result"></div>
   <div class="heart" id="heart">❤️</div>
-
-
-
 
   <pre id="file-content"></pre>
   <pre id="nameslist1"></pre>
@@ -66,13 +62,11 @@
   <div id="match-screen" class="overlay hidden">
     <div class="bg_heart">
     </div>
-    <div class="match-top-buttons">
-      <div class="button-wrapper" data-url="restaurant.html">
-        <button class="btn btn--red">Restaurant Picker</button>
-      </div>
-      <div class="button-wrapper" data-url="cookbook.html">
-        <button class="btn btn--red">Cook Book</button>
-      </div>
+    <div class="button-wrapper" data-url="restaurant.html">
+      <button class="btn btn--red">Restaurant Picker</button>
+    </div>
+    <div class="button-wrapper" data-url="cookbook.html">
+      <button class="btn btn--red">Cook Book</button>
     </div>
     <h2>100% MATCH! 💖</h2>
     <p id="match-result"></p>
@@ -83,29 +77,17 @@
     <button class="btn btn--red" onclick="location.href='matcher.html'">Go Back</button>
   </div>
 
-
-
-
   <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
   </div>
 
-  <!-- Heart background from: Ha Hyun Yong, more information on README-->
-
-
-
-
-
-
   <!-- for heart animation-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 
   <script src="movement.js"></script>
 
   <script type="module" src="CompatibilityCalculator.js"></script>
 
   <script src="HeartBackground.js"></script>
-
 
   </div>
 </body>

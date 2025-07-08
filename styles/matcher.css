@@ -1,0 +1,184 @@
+html,
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+h1 {
+  margin-top: 30px;
+}
+
+input[type="text"] {
+  z-index: var(--z-base);
+  position: relative;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* layout **/
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  z-index: var(--z-ui);
+}
+
+.input-section-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* characters **/
+
+.position-1 {
+  left: 30%;
+  top: 25%;
+}
+
+.position-2 {
+  left: 70%;
+  top: 25%;
+}
+
+/* match page **/
+
+/* The single one that pulses on the initial page */
+.heart {
+  pointer-events: none;
+
+  font-size: 50px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.result {
+  font-size: 24px;
+  margin-top: 20px;
+  z-index: var(--z-base);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff7f0;
+  z-index: var(--z-popup);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 28px;
+  color: #e67e22;
+  text-align: center;
+}
+
+.loader-heart {
+  pointer-events: none;
+  font-size: 32px;
+  animation: pulse 1.2s infinite;
+}
+
+/* misc */
+
+.hidden {
+  display: none;
+}
+
+/* Heart background from: Ha Hyun Yong, more information on README **/
+#match-screen .bg_heart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heart {
+  pointer-events: none;
+  position: absolute;
+  top: -50%;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -m-transform: rotate(-45deg);
+  transform: rotate(-45deg)
+}
+
+.heart:before {
+  pointer-events: none;
+  position: absolute;
+  top: -50%;
+  left: 0;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
+}
+
+.heart:after {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: -50%;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
+}
+
+@-webkit-keyframes love {
+  0% {
+    top: 110%
+  }
+}
+
+@-moz-keyframes love {
+  0% {
+    top: 110%
+  }
+}
+
+@-ms-keyframes love {
+  0% {
+    top: 110%
+  }
+}
+
+@keyframes love {
+  0% {
+    top: 110%
+  }
+}
