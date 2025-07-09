@@ -48,6 +48,8 @@
       <div id="center-popup" class="center-popup hidden">
         <h3 id="popup-title"></h3>
         <p id="popup-text"></p>
+        <div id="popup-stars" class="star-rating"></div>
+
       </div>
 
       <img src="assets/map - Copy.png" alt="Map" class="map-image" />
@@ -70,7 +72,6 @@
 
 
     <!-- Script show popup cards triggered by character hover-->
-
     <script>
       function checkCharacterOverlapWithPins() {
         const any = checkCharacterOverlapForElements('.pin', pin => {
@@ -84,6 +85,10 @@
           document.getElementById('popup-text').textContent = text;
           document.getElementById('popup-text').innerHTML = `${text}<br>Category: ${type}`;
 
+          const starsContainer = document.getElementById('popup-stars');
+          starsContainer.innerHTML = '';
+          starsContainer.appendChild(createStarRating(title));
+
           centerPopup.classList.remove('hidden');
         });
 
@@ -95,7 +100,7 @@
 
     <script src="scripts/movement.js"></script>
 
-    <script src="scripts/restaurant.js"></script>
+    <script src="Personalize/restaurant.js"></script>
 
     <script src="scripts/renderRestaurants.js"></script>
 
@@ -137,7 +142,6 @@
     </script>
 
     <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
-
 
     <!-- 
   This script helps you find the percentage-based position (top and left) 
