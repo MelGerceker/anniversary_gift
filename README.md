@@ -18,29 +18,35 @@ To run this project correctly, you need to **use a local server**, such as the [
 1. Clone or download this repository.
 2. Open the folder in Visual Studio Code.
 3. Install the **Live Server** extension.
-4. Right-click on any `.html` file (e.g. `home.html`) and click **"Open with Live Server"**.
+4. Right-click on any `.html` file (preferably `home.html`) and click **"Open with Live Server"**.
 5. You're ready!
 
 ## Pages Overview
 
 ### Home
 
-- Includes a **FAQ section**.
-- Some buttons **aren’t clickable** . Instead, move the character on the left with WASD and the character on the right with arrow keys. Both characters must go to the same button to activate it.
+- Includes a FAQ accordion menu.
+In this page, the user will figure out things like some buttons not *"working"* . Instead, the user has to move the character on the left with WASD and the character on the right with arrow keys. Both characters must go to the same button to activate it.
 
 ### Compatibility Test
 
+The match made screen is displayed on the right:
+
+<img src="https://github.com/user-attachments/assets/5e107826-53f8-4a6c-8d6a-90b2d4b092ac"  align="right" width="380" style="margin-left: 20px; margin-bottom: 0:"/>
+
 - Enter two names and check if they're a match.
+- When two names that are not a match you won't even get to the loading screen, a "typo?" text will be displayed.
+- When a match is made, the loading screen with "Calculating" text pulses on screen for 2 seconds.
+- Then, the user is shown the inner HTML with their names on it and heart animations.
 - To define which name pairs are matches, edit:  `Personalize/CompatibleNames.txt`:
 
-Below is an example folder. The amounts of names/nicknames written for each person should be written first.
+Below is an example folder. The amounts of names/nicknames written for each person should be written first. Do not delete/edit the lines that separate the names for each person.
 ```txt
-////Add-Names-And-Their-Amount-Below-Do-Not-Delete-This-Line////
-////Names-For-First-Person-Do-Not-Delete-This-Line////
+--Names-For-First-Person--
 2
 name1
 name2
-////Names-For-Second-Person-Do-Not-Delete-This-Line////
+--Names-For-Second-Person--
 3
 name3
 name4
@@ -53,19 +59,39 @@ An interactive map of our city with pinned restaurant we have visited.
 - Characters can walk to each location to reveal:
   - A review written for that restaurant
   - The food category provided by that restaurant
+  - Star rating data (stored locally)
 - Includes filter options to show only specific types of restaurants
 - A dice roll feature to pick a random spot.
 
 ### Cook Book
+
+<img src="https://github.com/user-attachments/assets/71d7ca1c-5229-492e-8ccf-90e210048fa5" align="right" width="380" style="margin-left: 20px; margin-bottom: 0:"/>
+
 A page dedicated to all the meals we’ve cooked together.
 
-- Add new dishes and comments using the input boxes.
-- Click on the edit icon at the bottom right of each dish to edit or delete.
-- Hover characters over each dish to view its comments.
+- Add new dishes and comments using the input boxes.  
+- Click on the edit icon at the bottom right of each dish to edit or delete.  
+- Hover characters over each dish to view its comments.  
 - Data is stored locally in the browser.
+The screenshot on the right shows the pop-up for editing each note.
 
 Since my partner is a fan of RuneScape, the cook book page also has a RuneScape inspired skill zone. The maximum skill level in the game is 99, so when one character runs to the area their skill level shows 99 while the other character is level 1.
+<br />
+<br />
 The sound effects of the buttons are also from the game.
+
+<br />
+<br />
+<br />
+
+A screenshot to show the general overview of the page and how the characters interact with each note on the grid: <br />
+
+![A screenshot of cookbook.html page](https://github.com/user-attachments/assets/85a23166-9fca-4abe-a425-4c4399a411f3)
+
+
+
+
+
 
 ## Current Folder Structure
 
