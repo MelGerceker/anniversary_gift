@@ -18,7 +18,6 @@ const updateStars = (rating) => {
     document.querySelectorAll(".star").forEach(star => {
         star.classList.toggle("filled", parseInt(star.dataset.value) <= rating);
     });
-    ratingText.textContent = `You rated: ${rating} star${rating > 1 ? "s" : ""}`;
 };
 
 // Load
