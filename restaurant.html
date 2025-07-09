@@ -72,39 +72,6 @@
 
 
     <!-- Script show popup cards triggered by character hover-->
-
-    <script>
-      function bindPopupStarRating(id) {
-        const container = document.getElementById('popup-stars');
-
-        console.log("Binding stars for:", id);
-        console.log("Stars in container:", container.querySelectorAll('.star').length);
-
-        // SAFETY: Ensure data-id is set (in case passed id is missing)
-        if (!id) id = container.getAttribute('data-id');
-        container.setAttribute('data-id', id);
-
-        const saved = parseInt(localStorage.getItem(`rating-${id}`)) || 0;
-        updateStars(container, saved);
-
-        container.querySelectorAll('.star').forEach(star => {
-          const value = parseInt(star.dataset.value);
-          star.addEventListener('click', () => {
-            localStorage.setItem(`rating-${id}`, value);
-            updateStars(container, value);
-          });
-
-          star.addEventListener('mouseenter', () => updateStars(container, value));
-          star.addEventListener('mouseleave', () => {
-            const saved = parseInt(localStorage.getItem(`rating-${id}`)) || 0;
-            updateStars(container, saved);
-          });
-        });
-      }
-
-
-    </script>
-
     <script>
       function checkCharacterOverlapWithPins() {
         const any = checkCharacterOverlapForElements('.pin', pin => {
@@ -118,26 +85,9 @@
           document.getElementById('popup-text').textContent = text;
           document.getElementById('popup-text').innerHTML = `${text}<br>Category: ${type}`;
 
-          // star rating
           const starsContainer = document.getElementById('popup-stars');
-          starsContainer.innerHTML = ''; // clear previous stars
-          starsContainer.setAttribute('data-id', title);
-
-          for (let i = 0; i < 5; i++) {
-            const star = document.createElement('span');
-            star.classList.add('star');
-            star.dataset.value = i + 1;
-            star.innerHTML = `
-    <svg viewBox="0 0 24 24">
-      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 
-               9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-    </svg>`;
-            starsContainer.appendChild(star);
-          }
-
-          //initStarRatings();
-          bindPopupStarRating(title);
-
+          starsContainer.innerHTML = '';
+          starsContainer.appendChild(createStarRating(title));
 
           centerPopup.classList.remove('hidden');
         });
@@ -192,7 +142,6 @@
     </script>
 
     <img id="love-heart" class="pixel-heart hidden" src="assets/pixel-heart.png" alt="heart">
-
 
     <!-- 
   This script helps you find the percentage-based position (top and left) 

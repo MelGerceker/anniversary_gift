@@ -197,7 +197,7 @@ body {
   display: flex;
   gap: 4px;
   margin-top: 5px;
-  background: red;
+  justify-content: center;
 }
 
 .star svg {
@@ -209,14 +209,10 @@ body {
 }
 
 .star.filled svg {
-  fill: gold; /* filled star */
+  fill: gold; 
   stroke: orange;
 }
 
-.star.filled {
-  fill: #FFD700; /* Gold color for filled stars */
-}
-
 .star:hover svg {
-  fill: #ffca28; /* slightly brighter gold on hover */
+  fill: #ffca28;
 }

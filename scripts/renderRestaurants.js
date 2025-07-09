@@ -1,23 +1,25 @@
-function initStarRatings() {
-  document.querySelectorAll('.star-rating').forEach(container => {
-    const id = container.dataset.id || 'global';
-    const saved = localStorage.getItem(`rating-${id}`);
-    if (saved) updateStars(container, parseInt(saved));
 
-    container.querySelectorAll('.star').forEach(star => {
-      const value = parseInt(star.dataset.value);
-      star.addEventListener('click', () => {
-        localStorage.setItem(`rating-${id}`, value);
-        updateStars(container, value);
-      });
+function createStarRating(id) {
+  const container = document.createElement('div');
+  container.className = 'star-rating';
+  container.dataset.id = id;
 
-      star.addEventListener('mouseenter', () => updateStars(container, value));
-      star.addEventListener('mouseleave', () => {
-        const saved = localStorage.getItem(`rating-${id}`) || 0;
-        updateStars(container, parseInt(saved));
-      });
-    });
-  });
+  for (let i = 0; i < 5; i++) {
+    const star = document.createElement('span');
+    star.classList.add('star');
+    star.dataset.value = i + 1;
+    star.innerHTML = `
+      <svg viewBox="0 0 24 24">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 
+                 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+      </svg>`;
+    container.appendChild(star);
+  }
+
+  bindStarEvents(container, id);
+  const saved = parseInt(localStorage.getItem(`rating-${id}`)) || 0;
+  updateStars(container, saved);
+  return container;
 }
 
 function createRestaurantPin(restaurant) {
@@ -73,11 +75,7 @@ function createRestaurantPin(restaurant) {
   pin.appendChild(popup);
 
   document.querySelector('.map-wrapper').appendChild(pin);
-  initStarRatings(); // here?
-
 }
-
-
 
 function updateStars(container, rating) {
   if (!container) return;
@@ -87,7 +85,23 @@ function updateStars(container, rating) {
   });
 }
 
+function bindStarEvents(container, id) {
+  container.querySelectorAll('.star').forEach(star => {
+    const value = parseInt(star.dataset.value);
 
+    star.addEventListener('click', () => {
+      localStorage.setItem(`rating-${id}`, value);
+      updateStars(container, value);
+    });
+
+    star.addEventListener('mouseenter', () => updateStars(container, value));
+
+    star.addEventListener('mouseleave', () => {
+      const saved = parseInt(localStorage.getItem(`rating-${id}`)) || 0;
+      updateStars(container, saved);
+    });
+  });
+}
 
 // Render all restaurants
 window.addEventListener('DOMContentLoaded', () => {
