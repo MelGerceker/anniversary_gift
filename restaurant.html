@@ -178,29 +178,7 @@
   </script>
   -->
 
-    <!--Script for changing map image-->
-    <script>
-      //const mapUploadInput = document.getElementById('map-upload');
-      //const mapImage = document.querySelector('.map-image');
-
-      mapUploadInput.addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-
-        reader.onload = function (e) {
-          const uploadedURL = e.target.result;
-          mapImage.src = uploadedURL;
-          localStorage.setItem('customMapImage', uploadedURL);  // Store in localStorage
-        };
-
-        reader.readAsDataURL(file);  // Convert image to base64
-      });
-
-    </script>
-
-    <!--Script that loads saved image from localStorage-->
+    <!--Changes map image and loads saved image from localStorage-->
     <script>
       const mapUploadInput = document.getElementById('map-upload');
       const mapImage = document.querySelector('.map-image');
