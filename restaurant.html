@@ -52,7 +52,7 @@
 
       </div>
 
-      <img src="assets/map - Copy.png" alt="Map" class="map-image" />
+      <img src="assets/map.png" alt="Map" class="map-image" />
 
     </div>
 
@@ -69,6 +69,12 @@
       <label><input type="checkbox" value="pizza" checked /> Pizza</label>
       <label><input type="checkbox" value="mexican" checked /> Mexican</label>
     </div>
+
+    <div class="map-controls">
+      <input type="file" id="map-upload" accept="image/*">
+      <button onclick="resetMapToDefault()">Reset Map to Default</button>
+    </div>
+
 
 
     <!-- Script show popup cards triggered by character hover-->
@@ -171,6 +177,68 @@
    });
   </script>
   -->
+
+    <!--Script for changing map image-->
+    <script>
+      //const mapUploadInput = document.getElementById('map-upload');
+      //const mapImage = document.querySelector('.map-image');
+
+      mapUploadInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const uploadedURL = e.target.result;
+          mapImage.src = uploadedURL;
+          localStorage.setItem('customMapImage', uploadedURL);  // Store in localStorage
+        };
+
+        reader.readAsDataURL(file);  // Convert image to base64
+      });
+
+    </script>
+
+    <!--Script that loads saved image from localStorage-->
+    <script>
+      const mapUploadInput = document.getElementById('map-upload');
+      const mapImage = document.querySelector('.map-image');
+
+      mapUploadInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const uploadedURL = e.target.result;
+          mapImage.src = uploadedURL;
+          localStorage.setItem('customMapImage', uploadedURL);  // Store in localStorage
+        };
+
+        reader.readAsDataURL(file);  // Convert image to base64
+      });
+
+      // Keep image in memory
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedMapImage = localStorage.getItem('customMapImage');
+        if (savedMapImage) {
+          document.querySelector('.map-image').src = savedMapImage;
+        }
+      });
+
+      // Defalut map button logic
+      function resetMapToDefault() {
+        const mapImage = document.querySelector('.map-image');
+        const defaultSrc = 'assets/map.png';
+        mapImage.src = defaultSrc;
+        localStorage.removeItem('customMapImage');
+      }
+
+
+
+    </script>
 
 </body>
 
