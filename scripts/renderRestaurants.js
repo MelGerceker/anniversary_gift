@@ -1,3 +1,6 @@
+let editModeActive = false;
+let pinBeingEdited = null;
+
 
 function createStarRating(id) {
   const container = document.createElement('div');
@@ -69,10 +72,26 @@ function createRestaurantPin(restaurant) {
   popup.appendChild(starRating);
   console.log("Added star rating to:", restaurant.name);
 
-
   pin.appendChild(icon);
   pin.appendChild(label);
   pin.appendChild(popup);
+
+  // Enable edit mode on double-click
+  pin.addEventListener('dblclick', function (e) {
+    e.stopPropagation();
+
+    pinBeingEdited = pin;
+    editModeActive = true;
+    
+    // for css
+    pin.classList.add('selected-pin');
+    document.querySelectorAll('.pin').forEach(otherPin => {
+      if (otherPin !== pin) {
+        otherPin.classList.add('dimmed');
+      }
+    });
+  });
+
 
   document.querySelector('.map-wrapper').appendChild(pin);
 }

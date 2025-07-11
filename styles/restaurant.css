@@ -173,6 +173,16 @@ body {
   margin-top: 2px;
 }
 
+.dimmed {
+  opacity: 0.3;
+}
+
+.selected-pin {
+  outline: 2px dashed orange;
+  z-index: 10;
+}
+
+
 /* pop-up cards **/
 
 .popup-card {
