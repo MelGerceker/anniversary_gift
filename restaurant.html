@@ -29,19 +29,28 @@
   <audio id="button-sound" src="assets/runescape_button.wav" preload="auto"></audio>
 
   <div class="wrapper">
-    <div class="dice-box">
-      <div class="button-wrapper" data-url="matcher.html">
-        <button class="btn btn--red">Compatibility Test</button>
-      </div>
-      <div class="button-wrapper" data-url="cookbook.html">
-        <button class="btn btn--red">Cook Book</button>
-      </div>
+    <div class="sidebar-column">
 
-      <button onclick="playSoundAndGo('home.html')" class="btn home-button">Home 🏠</button>
-      <button onclick="resetCharacters()" class="btn reset-button">Reset</button>
+      <div class="dice-box">
+        <div class="button-wrapper" data-url="matcher.html">
+          <button class="btn btn--red">Compatibility Test</button>
+        </div>
+        <div class="button-wrapper" data-url="cookbook.html">
+          <button class="btn btn--red">Cook Book</button>
+        </div>
 
-      <button id="dice-button" class="btn">🎲 Roll the Dice</button>
-      <p id="dice-result"></p>
+        <button onclick="playSoundAndGo('home.html')" class="btn home-button">Home 🏠</button>
+        <button onclick="resetCharacters()" class="btn reset-button">Reset</button>
+
+        <button id="dice-button" class="btn">🎲 Roll the Dice</button>
+        <p id="dice-result"></p>
+      </div>
+      <div class="map-controls">
+        <div class="custom-file-upload">
+          <label class="btn" for="map-upload">Upload Map</label>
+          <input type="file" id="map-upload" accept="image/*">
+        </div> <button class="btn" onclick="resetMapToDefault()">Reset Map</button>
+      </div>
     </div>
 
     <div class="map-wrapper">
@@ -69,13 +78,6 @@
       <label><input type="checkbox" value="pizza" checked /> Pizza</label>
       <label><input type="checkbox" value="mexican" checked /> Mexican</label>
     </div>
-
-    <div class="map-controls">
-      <input type="file" id="map-upload" accept="image/*">
-      <button onclick="resetMapToDefault()">Reset Map to Default</button>
-    </div>
-
-
 
     <!-- Script show popup cards triggered by character hover-->
     <script>
