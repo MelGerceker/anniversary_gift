@@ -1,18 +1,12 @@
-#  🎁 Anniversary Gift
+# Anniversary Gift 🎁
 
 **A personalized, interactive web space built with HTML, CSS, and JavaScript.**
 
-This project is an aniversary gift for my partner, made public to inspire others who want to code their own personal projects for loved ones.
+This project is an aniversary gift for my partner, made public to inspire others who want to code their own personal projects for loved ones. It is a  pixel-art themed website with multiple interactive pages, some parts are hidden as surprises.
 
-## What is it?
+## How to Launch
 
-A pixel-art themed website with multiple interactive pages, some parts are hidden as surprises.
-
-## 🚀 How to Launch
-
-To run this project correctly, you need to **use a local server**, such as the [Live Server extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
-
-**Why?** Some parts of the project (like reading the `CompatibleNames.txt` file in JavaScript) won't work if you just open the HTML file directly in your browser. Running through a local server ensures everything loads properly.
+To launch, a local server such as the [Live Server extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) is needed. Some parts of the project (like reading the `CompatibleNames.txt` file in JavaScript) won't work if you just open the HTML file directly in your browser. Running through a local server ensures everything loads properly.
 
 ### Steps:
 1. Clone or download this repository.
@@ -26,6 +20,8 @@ To run this project correctly, you need to **use a local server**, such as the [
 ### Home
 
 - Includes a FAQ accordion menu.
+  <br />
+    <br />
 In this page, the user will figure out things like some buttons not *"working"* . Instead, the user has to move the character on the left with WASD and the character on the right with arrow keys. Both characters must go to the same button to activate it.
 
 ### Compatibility Test
@@ -63,6 +59,13 @@ An interactive map of our city with pinned restaurant we have visited.
 - Includes filter options to show only specific types of restaurants
 - A dice roll feature to pick a random spot.
 
+There are also some features to make the creation of this page easier:
+- The uplaod map and reset map buttons allow user to select an image for the map from their device or go back to the default image in the assets folder.
+- There is also an edit mode for the restaurant pins. When user double clicks on a pin, edit mode is opened and the pin can be relocated within the map image. The new locations are not saved locally, instead they are formatted and copied when "Copy Updated Data" button is clicked.
+
+A screenshot of the general overview:
+<img width="1917" height="892" alt="image" src="https://github.com/user-attachments/assets/88c75b51-4076-4840-bffa-69446a0e4cfd" />
+
 ### Cook Book
 
 <img src="https://github.com/user-attachments/assets/71d7ca1c-5229-492e-8ccf-90e210048fa5" align="right" width="380" style="margin-left: 20px; margin-bottom: 0:"/>
@@ -90,30 +93,21 @@ A screenshot to show the general overview of the page and how the characters int
 
 
 
-
-
-
 ## Current Folder Structure
 
 ```
 anniversary_gift/
-├── assets/                # Images, icons, fonts, and sound effects
-├── cookbook.html          # Cookbook page
-├── matcher.html           # Compatibility test page
-├── matcher.css
-├── restaurant.html        # Restaurant picker page
-├── restaurant.css
-├── home.html              # Home and FAQ
-├── cookbook.js / css      # Logic and styling for recipe notes
-├── movement.js            # Character movement system
-├── nameReader.js
-├──CompatibilityCalculator.js
+├── assets/                  # Images, icons, fonts, and sound effects
 ├── Personalize/
-│   └── CompatibleNames.txt # Custom name matcher data
+│   └── CompatibleNames.txt  # Custom name matcher data
+│   └── restaurant.js        # Restaurant data
+├── scripts/                 # All js files
+├── styles/                  # All css files including a base.css
+├── cookbook.html            # Cookbook page
+├── matcher.html             # Compatibility test page
+├── restaurant.html          # Restaurant picker page
+├── home.html                # Home and FAQ
 ```
-
-## Work in Progress 🚧
-Still in the progress of upgrading!
 
 ## Credits
 
