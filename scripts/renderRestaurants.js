@@ -82,7 +82,7 @@ function createRestaurantPin(restaurant) {
 
     pinBeingEdited = pin;
     editModeActive = true;
-    
+
     // for css
     pin.classList.add('selected-pin');
     document.querySelectorAll('.pin').forEach(otherPin => {
@@ -127,3 +127,35 @@ window.addEventListener('DOMContentLoaded', () => {
   restaurantData.forEach(createRestaurantPin);
 
 });
+
+// Move pins
+document.querySelector('.map-wrapper').addEventListener('click', function (e) {
+  if (!editModeActive || !pinBeingEdited) return;
+
+  const wrapper = this.getBoundingClientRect();
+  const x = ((e.clientX - wrapper.left) / wrapper.width) * 100;
+  const y = ((e.clientY - wrapper.top) / wrapper.height) * 100;
+
+  const newTop = `${y.toFixed(1)}%`;
+  const newLeft = `${x.toFixed(1)}%`;
+
+  // Move the pin visually
+  pinBeingEdited.style.top = newTop;
+  pinBeingEdited.style.left = newLeft;
+
+  // Update restaurantData
+  const label = pinBeingEdited.querySelector('.label')?.textContent;
+  const restaurant = restaurantData.find(r => r.name === label);
+  if (restaurant) {
+    restaurant.top = newTop;
+    restaurant.left = newLeft;
+  }
+
+  // Exit edit mode
+  pinBeingEdited.classList.remove('selected-pin');
+  document.querySelectorAll('.pin').forEach(pin => pin.classList.remove('dimmed'));
+
+  pinBeingEdited = null;
+  editModeActive = false;
+});
+

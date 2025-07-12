@@ -107,3 +107,20 @@ const restaurantData = [
     review: "Review displayed here."
   }
 ];
+
+// Copy the data of moved restaurant pins while live
+document.getElementById('copy-data-button').addEventListener('click', () => {
+  const cleanedData = restaurantData.map(r => ({
+    name: r.name,
+    top: r.top,
+    left: r.left,
+    type: r.type,
+    review: r.review
+  }));
+
+  const jsonString = JSON.stringify(cleanedData, null, 2);
+
+  navigator.clipboard.writeText(jsonString)
+    .then(() => alert('Updated data copied to clipboard!'))
+    .catch(err => alert('Failed to copy: ' + err));
+});
