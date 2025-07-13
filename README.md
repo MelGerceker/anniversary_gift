@@ -1,28 +1,30 @@
 # Anniversary Gift 🎁
 
-**A personalized, interactive web space built with HTML, CSS, and JavaScript.**
+**A personalized, interactive pixel-art themed website built with HTML, CSS, and JavaScript.**
 
-This project is an aniversary gift for my partner, made public to inspire others who want to code their own personal projects for loved ones. It is a  pixel-art themed website with multiple interactive pages, some parts are hidden as surprises.
+This project was created as an anniversary gift for my partner and is now public to inspire others to build meaningful, personal web experiences for their loved ones.
 
 ## How to Launch
 
-To launch, a local server such as the [Live Server extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) is needed. Some parts of the project (like reading the `CompatibleNames.txt` file in JavaScript) won't work if you just open the HTML file directly in your browser. Running through a local server ensures everything loads properly.
+To launch, a local server such as the [Live Server extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) is needed. Some features (like reading from `CompatibleNames.txt` ) require a local server, hence opening the HTML files directly in a browser may not work as expected.
 
 ### Steps:
 1. Clone or download this repository.
 2. Open the folder in Visual Studio Code.
 3. Install the **Live Server** extension.
-4. Right-click on any `.html` file (preferably `home.html`) and click **"Open with Live Server"**.
+4. Right-click on `home.html` ( or any `.html` file) and select **"Open with Live Server"**.
 5. You're ready!
 
 ## Pages Overview
 
 ### Home
 
-- Includes a FAQ accordion menu.
+- Features a FAQ accordion menu.
+- Characters are controlled with:
+  - WASD for the left character (char1)
+  - Arrow keys for the right character (char2)
   <br />
-    <br />
-In this page, the user will figure out things like some buttons not *"working"* . Instead, the user has to move the character on the left with WASD and the character on the right with arrow keys. Both characters must go to the same button to activate it.
+In this page, the user will figure out things like some buttons not *"working"* . Instead, the buttons require both characters to activate them by standing on the same button.
 
 ### Compatibility Test
 
@@ -31,10 +33,14 @@ The match made screen is displayed on the right:
 <img src="https://github.com/user-attachments/assets/5e107826-53f8-4a6c-8d6a-90b2d4b092ac"  align="right" width="380" style="margin-left: 20px; margin-bottom: 0:"/>
 
 - Enter two names and check if they're a match.
-- When two names that are not a match you won't even get to the loading screen, a "typo?" text will be displayed.
-- When a match is made, the loading screen with "Calculating" text pulses on screen for 2 seconds.
-- Then, the user is shown the inner HTML with their names on it and heart animations.
-- To define which name pairs are matches, edit:  `Personalize/CompatibleNames.txt`:
+- If the names don’t match, a "typo?" message appears.
+- If they do match:
+  - A "Calculating..." loading screen appears for 2 seconds.
+  - Then, a match screen with heart animations and names is displayed.
+
+**Personalization**
+
+To define which name pairs are matches, edit:  `Personalize/CompatibleNames.txt`:
 
 Below is an example folder. The amounts of names/nicknames written for each person should be written first. Do not delete/edit the lines that separate the names for each person.
 ```txt
@@ -50,18 +56,21 @@ name5
 ```
 
 ### Restaurant Picker
-An interactive map of our city with pinned restaurant we have visited.
+An interactive map of your city with pinned restaurants you’ve visited.
 
+**Features:**
 - Characters can walk to each location to reveal:
   - A review written for that restaurant
-  - The food category provided by that restaurant
-  - Star rating data (stored locally)
-- Includes filter options to show only specific types of restaurants
-- A dice roll feature to pick a random spot.
+  - The food category provided
+  - Star rating (stored locally)
+- Filters to show only restaurants with desired food categories
+- Dice roll to pick a random spot
 
-There are also some features to make the creation of this page easier:
-- The uplaod map and reset map buttons allow user to select an image for the map from their device or go back to the default image in the assets folder.
-- There is also an edit mode for the restaurant pins. When user double clicks on a pin, edit mode is opened and the pin can be relocated within the map image. The new locations are not saved locally, instead they are formatted and copied when "Copy Updated Data" button is clicked.
+**Map Tools:**
+There are also some features to make the creation of this page easier.
+- Upload Map: Select a custom map image from user's device.
+- Reset Map: Revert to default map in assets folder.
+- Edit Mode: Double-click a pin to move it. Use "Copy Updated Data" to export new positions (not saved locally).
 
 A screenshot of the general overview:
 <img width="1917" height="892" alt="image" src="https://github.com/user-attachments/assets/88c75b51-4076-4840-bffa-69446a0e4cfd" />
@@ -70,12 +79,12 @@ A screenshot of the general overview:
 
 <img src="https://github.com/user-attachments/assets/71d7ca1c-5229-492e-8ccf-90e210048fa5" align="right" width="380" style="margin-left: 20px; margin-bottom: 0:"/>
 
-A page dedicated to all the meals we’ve cooked together.
+A page dedicated to all the meals you’ve cooked together.
 
 - Add new dishes and comments using the input boxes.  
 - Click on the edit icon at the bottom right of each dish to edit or delete.  
 - Hover characters over each dish to view its comments.  
-- Data is stored locally in the browser.
+- Data is stored locally.
 The screenshot on the right shows the pop-up for editing each note.
 
 Since my partner is a fan of RuneScape, the cook book page also has a RuneScape inspired skill zone. The maximum skill level in the game is 99, so when one character runs to the area their skill level shows 99 while the other character is level 1.
@@ -101,8 +110,8 @@ anniversary_gift/
 ├── Personalize/
 │   └── CompatibleNames.txt  # Custom name matcher data
 │   └── restaurant.js        # Restaurant data
-├── scripts/                 # All js files
-├── styles/                  # All css files including a base.css
+├── scripts/                 # JavaScript files
+├── styles/                  # CSS files (including base.css)
 ├── cookbook.html            # Cookbook page
 ├── matcher.html             # Compatibility test page
 ├── restaurant.html          # Restaurant picker page
