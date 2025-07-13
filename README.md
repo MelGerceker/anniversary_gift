@@ -70,7 +70,7 @@ An interactive map of your city with pinned restaurants you’ve visited.
 There are also some features to make the creation of this page easier.
 - Upload Map: Select a custom map image from user's device.
 - Reset Map: Revert to default map in assets folder.
-- Edit Mode: Double-click a pin to move it. Use "Copy Updated Data" to export new positions (not saved locally).
+- Edit Mode: Double-click a pin to move it. Use "Copy Updated Data" to export new positions (not saved locally). The exported data can be pasted into `Personalize/restaurant.js`.
 
 A screenshot of the general overview:
 <img width="1917" height="892" alt="image" src="https://github.com/user-attachments/assets/88c75b51-4076-4840-bffa-69446a0e4cfd" />
